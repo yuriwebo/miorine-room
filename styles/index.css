@@ -1,0 +1,221 @@
+@font-face {
+  font-family: "Seele-1";
+  src: url("../fonts/Seele-One.otf") format("opentype");
+}
+@font-face {
+  font-family: "Seele-2";
+  src: url("../fonts/Seele-Two.otf") format("opentype");
+}
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Seele-1", "Seele-2", sans-serif;
+}
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  color: #6e79d7;
+  background-image: url("../images/pattern.png");
+}
+header {
+  width: 100%;
+  background-color: #6e79d7;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+header a {
+  text-decoration: none;
+}
+header h1 {
+  color: #ffffff;
+  margin: 0;
+}
+.content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-bottom: 50px;
+}
+.content .room-container {
+  position: relative;
+}
+.content .room-background {
+  width: 80%;
+  border-style: solid;
+  border-width: 4vw 5vw;
+  border-image-source: url("../images/screen.svg");
+  border-image-slice: 10% 7% fill;
+}
+.content .live-streaming {
+  position: absolute;
+  width: 10vw;
+  top: 4.8vw;
+  left: 16.5vw;
+}
+.content .photos-container {
+  position: absolute;
+  top: 10vw;
+  left: 31vw;
+}
+.content .photos-container img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 8vw;
+}
+.content .photos-container h2 {
+  position: absolute;
+  padding: 0.1em 0.4em;
+  margin: 0;
+  font-size: 1vw;
+  white-space: nowrap;
+  color: #6e79d7;
+  background-color: #ffffff;
+  visibility: hidden;
+  top: 2.5vw;
+  left: -0.2vw;
+}
+.content .photos-container:hover img {
+  -webkit-transform: rotate(-3deg);
+          transform: rotate(-3deg);
+}
+.content .photos-container:hover h2 {
+  visibility: visible;
+}
+.content .goods-container {
+  position: absolute;
+  top: 23.5vw;
+  left: 58.8vw;
+}
+.content .goods-container img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5vw;
+}
+.content .goods-container h2 {
+  position: absolute;
+  padding: 0.1em 0.4em;
+  margin: 0;
+  font-size: 1vw;
+  white-space: nowrap;
+  color: #6e79d7;
+  background-color: #ffffff;
+  visibility: hidden;
+  top: -1.5vw;
+  left: -1.3vw;
+}
+.content .goods-container:hover img {
+  -webkit-transform: rotate(-3deg);
+          transform: rotate(-3deg);
+}
+.content .goods-container:hover h2 {
+  visibility: visible;
+}
+.content .tablet-container {
+  position: absolute;
+  top: 20vw;
+  left: 28vw;
+}
+.content .tablet-container img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6vw;
+}
+.content .tablet-container h2 {
+  position: absolute;
+  padding: 0.1em 0.4em;
+  margin: 0;
+  font-size: 1vw;
+  white-space: nowrap;
+  color: #6e79d7;
+  background-color: #ffffff;
+  visibility: hidden;
+  top: 0vw;
+  left: -0.8vw;
+}
+.content .tablet-container:hover img {
+  -webkit-transform: rotate(-3deg);
+          transform: rotate(-3deg);
+}
+.content .tablet-container:hover h2 {
+  visibility: visible;
+}
+.content .books-container {
+  position: absolute;
+  top: 19vw;
+  left: 16vw;
+}
+.content .books-container img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 7.5vw;
+}
+.content .books-container h2 {
+  position: absolute;
+  padding: 0.1em 0.4em;
+  margin: 0;
+  font-size: 1vw;
+  white-space: nowrap;
+  color: #6e79d7;
+  background-color: #ffffff;
+  visibility: hidden;
+  top: 2vw;
+  left: 0vw;
+}
+.content .books-container:hover img {
+  -webkit-transform: rotate(-3deg);
+          transform: rotate(-3deg);
+}
+.content .books-container:hover h2 {
+  visibility: visible;
+}
+.content .about-container {
+  position: absolute;
+  top: 5vw;
+  left: 67vw;
+}
+.content .about-container img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 10vw;
+}
+.content .about-container h2 {
+  position: absolute;
+  padding: 0.1em 0.4em;
+  margin: 0;
+  font-size: 1vw;
+  white-space: nowrap;
+  color: #6e79d7;
+  background-color: #ffffff;
+  visibility: hidden;
+  top: 4vw;
+  left: 0vw;
+}
+.content .about-container:hover img {
+  -webkit-transform: rotate(-3deg);
+          transform: rotate(-3deg);
+}
+.content .about-container:hover h2 {
+  visibility: visible;
+}
+footer {
+  width: 100%;
+  color: #6e79d7;
+  background-color: #ffffff;
+  padding: 20px;
+}
