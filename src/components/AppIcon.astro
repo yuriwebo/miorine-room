@@ -1,0 +1,8 @@
+---
+const { commonName, imgAlt } = Astro.props;
+---
+<a href="">
+<section class={`${commonName} icon-container`}>
+  <img src={`/src/images/${commonName}.svg`} alt={imgAlt} />
+</section>
+</a>

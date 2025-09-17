@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Widget from '../components/Widget.astro';
+import '../styles/index.css';
+---
+
+<BaseLayout>
+  <div class="content room-container">
+    <img
+      class="room-background"
+      src="/src/images/room.png"
+      alt="在米奥莉奈的房间里，斯莱塔跪在地上，和坐着讲话的米奥莉奈面对面"
+    />
+    <img
+      class="live-streaming"
+      src="/src/images/live.svg"
+      alt="米奥莉奈的房间现场直播"
+    />
+    <Widget title="Photos" imgAlt="相册" commonName="photos" />
+    <Widget title="Goods" imgAlt="周边" commonName="goods" />
+    <Widget title="Tablet" imgAlt="平板" commonName="tablet" />
+    <Widget title="Books" imgAlt="书架" commonName="books" />
+    <Widget title="About Us" imgAlt="关于我们" commonName="about" />
+  </div>
+</BaseLayout>

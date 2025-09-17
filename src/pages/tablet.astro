@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AppIcon from "../components/AppIcon.astro";
+import '../styles/global.css';
+import '../styles/tablet.css';
+---
+<BaseLayout>
+  <div class="content tablet-container">
+    <AppIcon commonName="email" imgAlt="邮箱" />
+    <AppIcon commonName="company" imgAlt="公司" />
+    <AppIcon commonName="school" imgAlt="学校" />
+    <AppIcon commonName="game" imgAlt="游戏" />
+    <AppIcon commonName="keychain" imgAlt="hot桑和cool桑" />
+  </div>
+</BaseLayout>

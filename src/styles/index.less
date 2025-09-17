@@ -1,0 +1,71 @@
+@import "global.less";
+
+.room-container {
+  position: relative;
+  padding: 0;
+
+  .room-background {
+    width: 100%;
+  }
+
+  .live-streaming {
+    position: absolute;
+    width: 10vw;
+    top: 1vw;
+    left: 2vw;
+  }
+
+  .widget-common(@container-top, @container-left, @img-width, @heading-top, @heading-left) {
+    position: absolute;
+    top: @container-top;
+    left: @container-left;
+
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: @img-width;
+    }
+
+    h2 {
+      position: absolute;
+      padding: 0.1em 0.4em;
+      margin: 0;
+      font-size: 1vw;
+      white-space: nowrap;
+      color: @primary;
+      background-color: @white;
+      visibility: hidden;
+      top: @heading-top;
+      left: @heading-left;
+    }
+
+    &:hover img {
+      transform: rotate(-3deg);
+    }
+
+    &:hover h2 {
+      visibility: visible;
+    }
+  }
+
+  .photos-container {
+    .widget-common(7vw, 16vw, 8vw, 2.5vw, -0.2vw);
+  }
+
+  .goods-container {
+    .widget-common(19.8vw, 43.8vw, 5vw, -1.5vw, -1.3vw);
+  }
+
+  .tablet-container {
+    .widget-common(16vw, 15vw, 6vw, 0vw, -0.8vw);
+  }
+
+  .books-container {
+    .widget-common(15vw, 1vw, 7.5vw, 2vw, 0vw);
+  }
+
+  .about-container {
+    .widget-common(2vw, 50vw, 10vw, 4vw, 0vw);
+  }
+}

@@ -1,0 +1,68 @@
+@primary: #6e79d7;
+@shadow: #bfbad2;
+@white: #fff;
+@black: #000;
+@font-main: "Seele-1", "Seele-2", sans-serif;
+
+@images: "/src/images";
+@fonts: "/public/fonts";
+
+@font-face {
+  font-family: "Seele-1";
+  src: url("@{fonts}/Seele-One.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Seele-2";
+  src: url("@{fonts}/Seele-Two.otf") format("opentype");
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: @font-main;
+
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+  text-align: center;
+  background-image: url("@{images}/pattern.svg");
+}
+
+header {
+  width: 100%;
+  background-color: @primary;
+  a {
+    text-decoration: none;
+    color: @white;
+  }
+}
+
+main {
+  flex: 1;
+}
+
+.content {
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+
+  border-style: solid;
+  border-width: 4vw 5vw;
+  border-image-source: url("@{images}/screen.svg");
+  border-image-slice: 10% 7% fill;
+}
+
+footer {
+  width: 100%;
+  color: @primary;
+  background-color: @white;
+  padding: 20px;
+}

@@ -1,0 +1,83 @@
+@font-face {
+  font-family: "Seele-1";
+  src: url("/public/fonts/Seele-One.otf") format("opentype");
+}
+@font-face {
+  font-family: "Seele-2";
+  src: url("/public/fonts/Seele-Two.otf") format("opentype");
+}
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Seele-1", "Seele-2", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  background-image: url("/src/images/pattern.svg");
+}
+header {
+  width: 100%;
+  background-color: #6e79d7;
+}
+header a {
+  text-decoration: none;
+  color: #ffffff;
+}
+main {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.content {
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+  border-style: solid;
+  border-width: 4vw 5vw;
+  border-image-source: url("/src/images/screen.svg");
+  border-image-slice: 10% 7% fill;
+}
+footer {
+  width: 100%;
+  color: #6e79d7;
+  background-color: #ffffff;
+  padding: 20px;
+}
+.tablet-container section.icon-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 7px;
+  margin: 10px;
+  min-width: 50px;
+  min-height: 50px;
+  width: 5vw;
+  height: 5vw;
+  border-radius: 5px;
+  background-color: #6e79d7;
+}
+.tablet-container section.keychain {
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  padding: 3px;
+}
