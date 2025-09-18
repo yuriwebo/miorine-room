@@ -1,10 +1,10 @@
 @font-face {
   font-family: "Seele-1";
-  src: url("/public/Seele-One.otf") format("opentype");
+  src: url("/public/fonts/Seele-One.otf") format("opentype");
 }
 @font-face {
   font-family: "Seele-2";
-  src: url("/public/Seele-Two.otf") format("opentype");
+  src: url("/public/fonts/Seele-Two.otf") format("opentype");
 }
 * {
   -webkit-box-sizing: border-box;
@@ -20,8 +20,8 @@ body {
   min-height: 100vh;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   text-align: center;
   background-image: url("/src/images/pattern.svg");
 }
@@ -35,8 +35,8 @@ header a {
 }
 main {
   -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 .content {
   width: 80%;
@@ -59,14 +59,14 @@ footer {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 7px;
   margin: 10px;
   min-width: 50px;
