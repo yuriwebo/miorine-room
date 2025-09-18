@@ -1,25 +1,31 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Widget from '../components/Widget.astro';
+import roomImage from '../images/room.png';
+import liveImage from '../images/live.svg';
+import photosImage from '../images/photos.png';
+import goodsImage from '../images/goods.png';
+import tabletImage from '../images/tablet.png';
+import booksImage from '../images/books.png';
+import aboutImage from '../images/about.png';
 import '../styles/index.css';
 ---
-
 <BaseLayout>
   <div class="content room-container">
     <img
       class="room-background"
-      src="/src/images/room.png"
+      src={roomImage.src}
       alt="在米奥莉奈的房间里，斯莱塔跪在地上，和坐着讲话的米奥莉奈面对面"
     />
     <img
       class="live-streaming"
-      src="/src/images/live.svg"
+      src={liveImage.src}
       alt="米奥莉奈的房间现场直播"
     />
-    <Widget title="Photos" imgAlt="相册" commonName="photos" />
-    <Widget title="Goods" imgAlt="周边" commonName="goods" />
-    <Widget title="Tablet" imgAlt="平板" commonName="tablet" />
-    <Widget title="Books" imgAlt="书架" commonName="books" />
-    <Widget title="About Us" imgAlt="关于我们" commonName="about" />
+    <Widget title="Photos" imgSrc={photosImage.src} imgAlt="相册" itemName="photos" />
+    <Widget title="Goods" imgSrc={goodsImage.src} imgAlt="周边" itemName="goods" />
+    <Widget title="Tablet" imgSrc={tabletImage.src} imgAlt="平板" itemName="tablet" />
+    <Widget title="Books" imgSrc={booksImage.src} imgAlt="书架" itemName="books" />
+    <Widget title="About Us" imgSrc={aboutImage.src}  imgAlt="关于我们" itemName="about" />
   </div>
 </BaseLayout>

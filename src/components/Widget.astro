@@ -1,9 +1,9 @@
 ---
-const { title, imgAlt, commonName } = Astro.props;
+const { title, imgSrc, imgAlt, itemName } = Astro.props;
 ---
-<a href={`/${commonName}/`}>
-  <section class={`${commonName}-container`}>
-    <img src={`/src/images/${commonName}.png`} alt={imgAlt} />
+<a href={`/${itemName}/`}>
+  <section class={`${itemName}-container`}>
+    <img src={imgSrc} alt={imgAlt} />
     <h2>{title}</h2>
   </section>
 </a>

@@ -1,15 +1,20 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import AppIcon from "../components/AppIcon.astro";
+import emailImage from '../images/email.svg';
+import companyImage from '../images/company.svg';
+import schoolImage from '../images/school.svg';
+import gameImage from '../images/game.svg';
+import keychainImage from '../images/keychain.svg';
 import '../styles/global.css';
 import '../styles/tablet.css';
 ---
 <BaseLayout>
   <div class="content tablet-container">
-    <AppIcon commonName="email" imgAlt="邮箱" />
-    <AppIcon commonName="company" imgAlt="公司" />
-    <AppIcon commonName="school" imgAlt="学校" />
-    <AppIcon commonName="game" imgAlt="游戏" />
-    <AppIcon commonName="keychain" imgAlt="hot桑和cool桑" />
+    <AppIcon itemName="email" imgSrc={emailImage.src} imgAlt="邮箱" />
+    <AppIcon itemName="company" imgSrc={companyImage.src} imgAlt="公司" />
+    <AppIcon itemName="school" imgSrc={schoolImage.src} imgAlt="学校" />
+    <AppIcon itemName="game" imgSrc={gameImage.src} imgAlt="游戏" />
+    <AppIcon itemName="keychain" imgSrc={keychainImage.src} imgAlt="hot桑和cool桑" />
   </div>
 </BaseLayout>
