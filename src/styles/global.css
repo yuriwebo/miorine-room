@@ -23,6 +23,7 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   text-align: center;
+  color: #6e79d7;
   background-image: url("/src/images/pattern.svg");
 }
 header {

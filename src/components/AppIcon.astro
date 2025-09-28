@@ -1,7 +1,7 @@
 ---
 const { itemName, imgSrc, imgAlt } = Astro.props;
 ---
-<a href="">
+<a href={`/tablet/${itemName}`} class={`${itemName}`}>
   <section class={`${itemName} icon-container`}>
     <img src={imgSrc} alt={imgAlt} />
   </section>

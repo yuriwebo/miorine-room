@@ -2,19 +2,21 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import AppIcon from "../components/AppIcon.astro";
 import emailImage from '../images/email.svg';
-import companyImage from '../images/company.svg';
+import gundarmImage from '../images/gundarm.svg';
 import schoolImage from '../images/school.svg';
 import gameImage from '../images/game.svg';
-import keychainImage from '../images/keychain.svg';
+import omamoriImage from '../images/omamori.svg';
+import tomatoImage from '../images/tomato.png';
 import '../styles/global.css';
 import '../styles/tablet.css';
 ---
 <BaseLayout>
   <div class="content tablet-container">
     <AppIcon itemName="email" imgSrc={emailImage.src} imgAlt="邮箱" />
-    <AppIcon itemName="company" imgSrc={companyImage.src} imgAlt="公司" />
-    <AppIcon itemName="school" imgSrc={schoolImage.src} imgAlt="学校" />
+    <AppIcon itemName="gundarm" imgSrc={gundarmImage.src} imgAlt="高达公司" />
+    <AppIcon itemName="profile" imgSrc={schoolImage.src} imgAlt="个人信息" />
     <AppIcon itemName="game" imgSrc={gameImage.src} imgAlt="游戏" />
-    <AppIcon itemName="keychain" imgSrc={keychainImage.src} imgAlt="hot桑和cool桑" />
+    <AppIcon itemName="omamori" imgSrc={omamoriImage.src} imgAlt="胜利护身符" />
+    <AppIcon itemName="notrette" imgSrc={tomatoImage.src} imgAlt="代表母亲的番茄" />
   </div>
 </BaseLayout>

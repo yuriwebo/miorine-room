@@ -1,30 +1,77 @@
 @import "global.less";
 
-@icon-size-min: 50px;
 @icon-size: 5vw;
+@icon-size-min: 50px;
+@grid-gap: 20px;
 
 .tablet-container {
-  section {
-    &.icon-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  grid-gap: @grid-gap;
+  gap: @grid-gap;
 
-      padding: 7px;
-      margin: 10px;
-      min-width: @icon-size-min;
-      min-height: @icon-size-min;
-      width: @icon-size;
-      height: @icon-size;
-      border-radius: 5px;
-      background-color: @primary;
+  a {
+    width: fit-content;
+    height: fit-content;
+
+    &.email {
+      grid-column: 2;
+      grid-row: 4;
     }
 
-    &.keychain {
+    &.gundarm {
+      grid-column: 3;
+      grid-row: 2;
+    }
+
+    &.profile {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    &.game {
+      grid-column: 1;
+      grid-row: 4;
+    }
+
+    &.omamori {
+      grid-column: 2;
+      grid-row: 3;
+    }
+
+    &.notrette {
+      grid-column: 1;
+      grid-row: 1;
+    }
+  }
+
+  .icon-container {
+    display: flex;
+    place-items: center;
+    padding: 7px;
+    min-width: @icon-size-min;
+    min-height: @icon-size-min;
+    width: @icon-size;
+    height: @icon-size;
+    border-radius: 5px;
+    background-color: @primary;
+    img {
+      max-width: 100%;
+    }
+
+    .special-icon() {
       background-color: @white;
       border: 1px solid @black;
+    }
+
+    &.omamori {
+      .special-icon();
       padding: 3px;
+    }
+
+    &.notrette {
+      .special-icon();
     }
   }
 }
