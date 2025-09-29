@@ -16,31 +16,44 @@
     width: fit-content;
     height: fit-content;
 
+    // 被接触的icon，如悬浮、点击
+    .touched-icon() {
+      background-color: @white;
+      border: @icon-border-size solid @primary;
+      svg {
+        fill: @primary;
+      }
+    }
+
+    &:hover .icon-container {
+      .touched-icon();
+    }
+
+    &:active .icon-container {
+      transform: scale(1.2);
+      .touched-icon();
+    }
+
     &.email {
       grid-column: 2;
       grid-row: 4;
     }
-
     &.gundarm {
       grid-column: 3;
       grid-row: 2;
     }
-
     &.profile {
       grid-column: 2;
       grid-row: 2;
     }
-
     &.game {
       grid-column: 1;
       grid-row: 4;
     }
-
     &.omamori {
       grid-column: 2;
       grid-row: 3;
     }
-
     &.notrette {
       grid-column: 1;
       grid-row: 1;
@@ -58,7 +71,7 @@
     border-radius: 5px;
     border: @icon-border-size solid @primary;
     background-color: @primary;
-    transition: transform 0.1s ease;
+    transition: transform 0.1s ease-out;
     img {
       max-width: 100%;
     }
@@ -66,6 +79,7 @@
       fill: @white;
     }
 
+    // 直接放图片的icon
     .special-icon() {
       background-color: @white;
       border: @icon-border-size solid @black;
@@ -79,22 +93,5 @@
     &.notrette {
       .special-icon();
     }
-  }
-
-  .touched-icon() {
-    background-color: @white;
-    border: @icon-border-size solid @primary;
-    svg {
-      fill: @primary;
-    }
-  }
-
-  .icon-container:hover {
-    .touched-icon();
-  }
-
-  .icon-container:active {
-    transform: scale(1.2);
-    .touched-icon();
   }
 }

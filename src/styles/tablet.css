@@ -69,6 +69,22 @@ footer {
   height: -moz-fit-content;
   height: fit-content;
 }
+.tablet-container a:hover .icon-container {
+  background-color: #ffffff;
+  border: 1.2px solid #6e79d7;
+}
+.tablet-container a:hover .icon-container svg {
+  fill: #6e79d7;
+}
+.tablet-container a:active .icon-container {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  background-color: #ffffff;
+  border: 1.2px solid #6e79d7;
+}
+.tablet-container a:active .icon-container svg {
+  fill: #6e79d7;
+}
 .tablet-container a.email {
   grid-column: 2;
   grid-row: 4;
@@ -106,10 +122,10 @@ footer {
   border-radius: 5px;
   border: 1.2px solid #6e79d7;
   background-color: #6e79d7;
-  -webkit-transition: -webkit-transform 0.1s ease;
-  transition: -webkit-transform 0.1s ease;
-  transition: transform 0.1s ease;
-  transition: transform 0.1s ease, -webkit-transform 0.1s ease;
+  -webkit-transition: -webkit-transform 0.1s ease-out;
+  transition: -webkit-transform 0.1s ease-out;
+  transition: transform 0.1s ease-out;
+  transition: transform 0.1s ease-out, -webkit-transform 0.1s ease-out;
 }
 .tablet-container .icon-container img {
   max-width: 100%;
@@ -125,20 +141,4 @@ footer {
 .tablet-container .icon-container.notrette {
   background-color: #ffffff;
   border: 1.2px solid #000000;
-}
-.tablet-container .icon-container:hover {
-  background-color: #ffffff;
-  border: 1.2px solid #6e79d7;
-}
-.tablet-container .icon-container:hover svg {
-  fill: #6e79d7;
-}
-.tablet-container .icon-container:active {
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
-  background-color: #ffffff;
-  border: 1.2px solid #6e79d7;
-}
-.tablet-container .icon-container:active svg {
-  fill: #6e79d7;
 }
