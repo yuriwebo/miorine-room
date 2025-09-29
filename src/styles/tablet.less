@@ -3,6 +3,7 @@
 @icon-size: 5vw;
 @icon-size-min: 50px;
 @grid-gap: 20px;
+@icon-border-size: 1.2px;
 
 .tablet-container {
   display: grid;
@@ -55,14 +56,19 @@
     width: @icon-size;
     height: @icon-size;
     border-radius: 5px;
+    border: @icon-border-size solid @primary;
     background-color: @primary;
+    transition: transform 0.1s ease;
     img {
       max-width: 100%;
+    }
+    svg {
+      fill: @white;
     }
 
     .special-icon() {
       background-color: @white;
-      border: 1px solid @black;
+      border: @icon-border-size solid @black;
     }
 
     &.omamori {
@@ -73,5 +79,22 @@
     &.notrette {
       .special-icon();
     }
+  }
+
+  .touched-icon() {
+    background-color: @white;
+    border: @icon-border-size solid @primary;
+    svg {
+      fill: @primary;
+    }
+  }
+
+  .icon-container:hover {
+    .touched-icon();
+  }
+
+  .icon-container:active {
+    transform: scale(1.2);
+    .touched-icon();
   }
 }

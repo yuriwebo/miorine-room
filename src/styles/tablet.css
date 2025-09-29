@@ -104,17 +104,41 @@ footer {
   width: 5vw;
   height: 5vw;
   border-radius: 5px;
+  border: 1.2px solid #6e79d7;
   background-color: #6e79d7;
+  -webkit-transition: -webkit-transform 0.1s ease;
+  transition: -webkit-transform 0.1s ease;
+  transition: transform 0.1s ease;
+  transition: transform 0.1s ease, -webkit-transform 0.1s ease;
 }
 .tablet-container .icon-container img {
   max-width: 100%;
 }
+.tablet-container .icon-container svg {
+  fill: #ffffff;
+}
 .tablet-container .icon-container.omamori {
   background-color: #ffffff;
-  border: 1px solid #000000;
+  border: 1.2px solid #000000;
   padding: 3px;
 }
 .tablet-container .icon-container.notrette {
   background-color: #ffffff;
-  border: 1px solid #000000;
+  border: 1.2px solid #000000;
+}
+.tablet-container .icon-container:hover {
+  background-color: #ffffff;
+  border: 1.2px solid #6e79d7;
+}
+.tablet-container .icon-container:hover svg {
+  fill: #6e79d7;
+}
+.tablet-container .icon-container:active {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  background-color: #ffffff;
+  border: 1.2px solid #6e79d7;
+}
+.tablet-container .icon-container:active svg {
+  fill: #6e79d7;
 }

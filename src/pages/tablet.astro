@@ -1,10 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import AppIcon from "../components/AppIcon.astro";
-import emailImage from '../images/email.svg';
-import gundarmImage from '../images/gundarm.svg';
-import schoolImage from '../images/school.svg';
-import gameImage from '../images/game.svg';
 import omamoriImage from '../images/omamori.svg';
 import tomatoImage from '../images/tomato.png';
 import '../styles/global.css';
@@ -12,11 +8,46 @@ import '../styles/tablet.css';
 ---
 <BaseLayout>
   <div class="content tablet-container">
-    <AppIcon itemName="email" imgSrc={emailImage.src} imgAlt="邮箱" />
-    <AppIcon itemName="gundarm" imgSrc={gundarmImage.src} imgAlt="高达公司" />
-    <AppIcon itemName="profile" imgSrc={schoolImage.src} imgAlt="个人信息" />
-    <AppIcon itemName="game" imgSrc={gameImage.src} imgAlt="游戏" />
-    <AppIcon itemName="omamori" imgSrc={omamoriImage.src} imgAlt="胜利护身符" />
-    <AppIcon itemName="notrette" imgSrc={tomatoImage.src} imgAlt="代表母亲的番茄" />
+    <AppIcon itemName="email">
+      <svg viewBox="0 0 71.02 56.97" role="img" aria-label="邮箱">
+        <polygon points="35.51 29.06 71.02 5.06 71.02 0 0 0 0 5.06 35.51 29.06"/>
+        <polygon points="35.51 35.71 35.51 35.71 35.51 35.71 35.51 35.71 35.51 35.71 0 11.71 0 56.97 71.02 56.97 71.02 11.71 35.51 35.71"/>
+      </svg>
+    </AppIcon>
+    <AppIcon itemName="gundarm">
+      <svg viewBox="0 0 231.01 242.85" role="img" aria-label="高达公司">
+        <path d="M145.19,163.35c-5.12,2.92-10.86,4.9-16.72,5.72-31.01,4.35-58.02-21.17-55.04-52.4s33.96-50.89,63.49-41.17c2.88.95,5.49,2.43,8.27,3.61v-29.16c0-1.22,4.39-.88,5.4-.84,41.83,1.94,76.82,37.16,79.09,78.83v112.34c.08.9-.4,1.39-1.32,1.32l-82.45-.14c-.15-.13-.72-.65-.72-.72v-77.4Z"/>
+        <path d="M121.67,240.99c-.11.35-.95.56-1.32.6-1.77.21-5.28-.12-7.2-.25C47.16,236.98-2.9,179.24,1.43,113.31,5.31,54.24,52.71,5.67,111.95,1.35c1.53-.11,8.34-.56,9.24-.12.2.1.37.32.43.53l-.07,47.35c-.26.29-.61.4-.98.46-1.76.27-4.3.06-6.22.26-31.46,3.18-57.72,27.15-63.41,58.27-8.05,44.09,25.32,84.4,69.88,85.01.25-.02.85.47.85.59v47.28Z"/>
+      </svg>
+    </AppIcon>
+    <AppIcon itemName="profile">
+      <svg viewBox="0 0 106.16 77.18" role="img" aria-label="个人信息">
+        <polygon points="25.34 26.73 0 26.73 13.24 38.84 25.34 26.73"/>
+        <polygon points="63.81 26.73 43.21 26.73 22.57 47.37 55.15 77.18 106.16 0 63.81 26.73"/>
+      </svg>
+    </AppIcon>
+    <AppIcon itemName="game">
+      <svg viewBox="0 0 256 256"role="img" aria-label="游戏">
+        <polygon points="64 0 64 32 32 32 32 64 0 64 0 0 64 0"/>
+        <polygon points="256 0 256 64 224 64 224 32 192 32 192 0 256 0"/>
+        <polygon points="32 192 32 224 64 224 64 256 0 256 0 192 32 192"/>
+        <polygon points="256 192 256 256 192 256 192 224 224 224 224 192 256 192"/>
+        <rect x="120.5" y="24" width="15" height="80"/>
+        <polygon points="104 56.5 104 71.5 71.5 71.5 71.5 104 56.5 104 56.5 56.5 104 56.5"/>
+        <polygon points="199.5 56.5 199.5 104 184.5 104 184.5 71.5 152 71.5 152 56.5 199.5 56.5"/>
+        <rect x="24" y="120.5" width="80" height="15"/>
+        <rect x="152" y="120.5" width="80" height="15"/>
+        <polygon points="71.5 152 71.5 184.5 104 184.5 104 199.5 56.5 199.5 56.5 152 71.5 152"/>
+        <rect x="120.5" y="152" width="15" height="80"/>
+        <polygon points="199.5 152 199.5 199.5 152 199.5 152 184.5 184.5 184.5 184.5 152 199.5 152"/>
+        <rect x="120.5" y="120.5" width="15" height="15"/>
+      </svg>
+    </AppIcon>
+    <AppIcon itemName="omamori">
+      <img src={omamoriImage.src} alt="胜利护身符" />
+    </AppIcon>
+    <AppIcon itemName="notrette">
+      <img src={tomatoImage.src} alt="代表母亲的番茄" />
+    </AppIcon>
   </div>
 </BaseLayout>
