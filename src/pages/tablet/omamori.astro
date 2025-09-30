@@ -1,0 +1,104 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import omamoriImage from '../../images/omamori.svg';
+import '../../styles/omamori.css';
+---
+<BaseLayout>
+  <div class="content omamori-container">
+    <h2>
+      <span class="bigger-h2">REMOTE</span>
+      <br>CONTROl SYSTEM
+    </h2>
+
+    <!-- 上文 -->
+    <p class="normal-text top-p">Ready to begin<br>PROJECT</p>
+
+    <button class="playBtn">
+      <img src={omamoriImage.src} alt="胜利护身符" />
+    </button>
+
+    <!-- 下文 -->
+    <p class="normal-text bottom-p">Please tap</p>
+
+    <!-- 跑马灯 -->
+    <div class="marquee">
+      <span>Happy birthday to you. ♪</span>
+      <span aria-hidden="true">Happy birthday to you. ♪</span>
+      <span aria-hidden="true">Happy birthday to you. ♪</span>
+      <span aria-hidden="true">Happy birthday to you. ♪</span>
+      <span aria-hidden="true">Happy birthday to you. ♪</span>
+    </div>
+    <audio id="hbdMusic" src="/hbd.mp3"></audio>
+  </div>
+</BaseLayout>
+
+<style>
+  p.normal-text {
+    transition: opacity 0.2s ease;
+  }
+  /* 淡出 */
+  p.normal-text.fade-out {
+    opacity: 0;
+  }
+</style>
+
+<script>
+  const btn = document.querySelector(".playBtn") as HTMLImageElement;
+  const audio = document.getElementById("hbdMusic") as HTMLAudioElement;
+
+  const pausedText: [string, string, string] = [
+    `Ready to begin<br>PROJECT`,
+    "Please tap",
+    "#324599",
+  ]
+  const playingText: [string, string, string] = [
+    `Activated<br>remote control system<br>For linked device`,
+    "Completed",
+    "#e55c38",
+  ]
+
+  btn.addEventListener('click', () => {
+    if (audio.paused) {
+      // 播放音乐
+      audio.currentTime = 0;
+      audio.play();
+      changeText(...playingText);
+    } else {
+      // 停止音乐
+      audio.pause();
+      changeText(...pausedText);
+    }
+  });
+
+  // 播放完毕后恢复界面
+  audio.addEventListener('ended', () => {
+    changeText(...pausedText);
+  });
+
+  // 改变文字
+  const changeText = (topHtml: string, bottomText: string, bottomColor: string) => {
+    const topP = document.querySelector(".top-p") as HTMLParagraphElement;
+    const bottomP = document.querySelector(".bottom-p") as HTMLParagraphElement;
+
+    // 先让文字淡出
+    topP.classList.add("fade-out");
+    bottomP.classList.add("fade-out");
+
+    // 等过渡结束后，换文字再淡入
+    topP.addEventListener('transitionend', () => {
+      topP.innerHTML = topHtml;
+      topP.classList.remove("fade-out");
+    }, {
+      // 防止多次触发和内存泄漏
+      once: true
+    })
+
+    bottomP.addEventListener('transitionend', () => {
+      bottomP.innerText = bottomText;
+      bottomP.style.color = bottomColor;
+      bottomP.classList.remove("fade-out");
+    }, {
+      once: true
+    })
+  }
+</script>

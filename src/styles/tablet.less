@@ -1,9 +1,11 @@
 @import "global.less";
 
-@icon-size: 5vw;
-@icon-size-min: 50px;
+@icon-size: 8vw;
+@icon-size-min: 58px;
 @grid-gap: 20px;
 @icon-border-size: 1.2px;
+@icon-border-radius: 5px;
+@omamori-padding: 3px;
 
 .tablet-container {
   display: grid;
@@ -19,9 +21,12 @@
     // 被接触的icon，如悬浮、点击
     .touched-icon() {
       background-color: @white;
-      border: @icon-border-size solid @primary;
       svg {
         fill: @primary;
+      }
+      &.omamori,
+      &.notrette {
+        background-color: @primary;
       }
     }
 
@@ -68,7 +73,7 @@
     min-height: @icon-size-min;
     width: @icon-size;
     height: @icon-size;
-    border-radius: 5px;
+    border-radius: @icon-border-radius;
     border: @icon-border-size solid @primary;
     background-color: @primary;
     transition: transform 0.1s ease-out;
@@ -82,12 +87,12 @@
     // 直接放图片的icon
     .special-icon() {
       background-color: @white;
-      border: @icon-border-size solid @black;
+      border: @icon-border-size solid @primary;
     }
 
     &.omamori {
       .special-icon();
-      padding: 3px;
+      padding: @omamori-padding;
     }
 
     &.notrette {

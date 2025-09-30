@@ -1,0 +1,57 @@
+@import "global.less";
+@import "tablet.less";
+
+.omamori-container {
+  h2 {
+    color: @white;
+    background: linear-gradient(to right, @primary, @light, @primary);
+    padding: 10px 0;
+    margin: 0;
+
+    @media screen and (min-width: 600px) {
+      .bigger-h2 {
+        font-size: 1.5em;
+      }
+    }
+  }
+
+  p.normal-text {
+    color: @dark;
+  }
+
+  .playBtn {
+    min-width: @icon-size-min;
+    min-height: @icon-size-min;
+    width: @icon-size;
+    height: @icon-size;
+    border: @icon-border-size solid @primary;
+    border-radius: @icon-border-radius;
+    background-color: @white;
+    padding: @omamori-padding;
+    cursor: pointer;
+  }
+
+  .marquee {
+    overflow: hidden;
+    white-space: nowrap;
+
+    span {
+      display: inline-block;
+      white-space: pre;
+      padding-right: 15px;
+      font-size: 0.6em;
+      color: @shadow;
+      animation: slide 15s linear infinite;
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translatex(0%);
+      }
+
+      100% {
+        transform: translatex(-100%);
+      }
+    }
+  }
+}
