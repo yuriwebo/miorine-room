@@ -14,7 +14,8 @@ import '../../styles/omamori.css';
     <p class="normal-text top-p">Ready to begin<br>PROJECT</p>
 
     <button class="playBtn">
-      <img src={omamoriImage.src} alt="胜利护身符" />
+      <div class="star"></div>
+      <img class="omamoriImage" src={omamoriImage.src} alt="胜利护身符">
     </button>
 
     <!-- 下文 -->
@@ -33,12 +34,18 @@ import '../../styles/omamori.css';
 </BaseLayout>
 
 <style>
-  p.normal-text {
-    transition: opacity 0.2s ease;
-  }
-  /* 淡出 */
   p.normal-text.fade-out {
     opacity: 0;
+  }
+
+  .star.shrink {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .omamoriImage.hidden {
+    opacity: 0;
+    transform: scaleX(0);
   }
 </style>
 
@@ -63,16 +70,19 @@ import '../../styles/omamori.css';
       audio.currentTime = 0;
       audio.play();
       changeText(...playingText);
+      changeToPlayingBtn();
     } else {
       // 停止音乐
       audio.pause();
       changeText(...pausedText);
+      changeToPausedBtn();
     }
   });
 
   // 播放完毕后恢复界面
   audio.addEventListener('ended', () => {
     changeText(...pausedText);
+    changeToPausedBtn();
   });
 
   // 改变文字
@@ -101,4 +111,29 @@ import '../../styles/omamori.css';
       once: true
     })
   }
+
+  const changeToPlayingBtn = () => {
+    const star = document.querySelector(".star") as HTMLDivElement;
+    const img = document.querySelector(".omamoriImage") as HTMLImageElement;
+
+    star.classList.add("shrink");
+    btn.style.backgroundColor = "#6e79d7";
+
+    // 隐藏时间为scaleX时间
+    img.classList.add("hidden");
+    img.addEventListener('transitionend', () => {
+      img.classList.remove("hidden");
+    }, {
+      once: true
+    })
+  };
+
+  const changeToPausedBtn = () => {
+    const star = document.querySelector(".star") as HTMLDivElement;
+    const img = document.querySelector(".omamoriImage") as HTMLImageElement;
+
+    star.classList.remove("shrink");
+    btn.style.backgroundColor = "#fff";
+    img.classList.remove("hidden");
+  };
 </script>
