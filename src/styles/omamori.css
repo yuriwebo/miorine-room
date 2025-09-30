@@ -165,6 +165,9 @@ footer {
   -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
 }
+.omamori-container p.normal-text.fade-out {
+  opacity: 0;
+}
 .omamori-container .playBtn {
   position: relative;
   overflow: hidden;
@@ -198,6 +201,11 @@ footer {
   transition: transform 0.2s ease;
   transition: transform 0.2s ease, -webkit-transform 0.2s ease;
 }
+.omamori-container .playBtn .star.shrink {
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
 .omamori-container .playBtn .omamoriImage {
   position: relative;
   z-index: 1;
@@ -205,6 +213,11 @@ footer {
   transition: -webkit-transform 0.2s ease;
   transition: transform 0.2s ease;
   transition: transform 0.2s ease, -webkit-transform 0.2s ease;
+}
+.omamori-container .playBtn .omamoriImage.hidden {
+  opacity: 0;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
 }
 .omamori-container .marquee {
   overflow: hidden;

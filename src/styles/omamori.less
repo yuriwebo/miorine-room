@@ -18,6 +18,11 @@
   p.normal-text {
     color: @dark;
     transition: opacity 0.2s ease;
+
+    // 淡出
+    &.fade-out {
+      opacity: 0;
+    }
   }
 
   .playBtn {
@@ -56,12 +61,24 @@
       opacity: 0; /* 默认不可见 */
       transform: scale(5); /* 初始放大居中 */
       transition: transform 0.2s ease;
+
+      // 缩小
+      &.shrink {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .omamoriImage {
       position: relative;
       z-index: 1; // 在五角星上面
       transition: transform 0.2s ease;
+
+      // 隐藏、挤压
+      &.hidden {
+        opacity: 0;
+        transform: scaleX(0);
+      }
     }
   }
 
