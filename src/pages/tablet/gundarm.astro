@@ -5,14 +5,11 @@ import '../../styles/gundarm.css';
 <BaseLayout>
   <div class="content gundarm-container">
     <div class="video-container">
-      <!-- 循环播放/字幕OFF/关联视频仅限同一频道/白色进度条 -->
-      <iframe
-        class="promotion-video"
-        src="https://www.youtube-nocookie.com/embed/rLr_ZFXQq4Q?loop=1&cc_load_policy=0&rel=0&color=white&playlist=rLr_ZFXQq4Q"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen>
-      </iframe>
-    </div>
+      <video class="promotion-video" controls>
+        <source
+          src="https://video.twimg.com/ext_tw_video/1596777004615233536/pu/vid/1280x720/d5_zercPbbJgYqF0.mp4?tag=12"
+          type="video/mp4">
+      </video>
+      </div>
   </div>
 </BaseLayout>
