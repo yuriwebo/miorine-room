@@ -154,16 +154,36 @@ footer {
   background: linear-gradient(to right, #6e79d7, #919fe6, #6e79d7);
   padding: 10px 0;
   margin: 0;
+  font-size: clamp(10px, 2vw, 25px);
 }
-@media screen and (min-width: 600px) {
-  .omamori-container h2 .bigger-h2 {
-    font-size: 1.5em;
-  }
+.omamori-container h2 .bigger-h2 {
+  font-size: clamp(16px, 3vw, 33px);
 }
 .omamori-container p.normal-text {
   color: #324599;
   -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
+  font-size: clamp(10px, 2vw, 25px);
+}
+.omamori-container p.normal-text.top-p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: clamp(35px, 8vw, 100px);
+}
+.omamori-container p.normal-text.bottom-p {
+  margin-top: clamp(5px, 1vw, 8px);
+  margin-bottom: 2.5vw;
 }
 .omamori-container p.normal-text.fade-out {
   opacity: 0;
@@ -223,14 +243,16 @@ footer {
   overflow: hidden;
   white-space: nowrap;
 }
-.omamori-container .marquee span {
+.omamori-container .marquee p {
   display: inline-block;
-  white-space: pre;
-  padding-right: 15px;
-  font-size: 0.6em;
+  font-size: clamp(6px, 0.8vw, 10px);
   color: #bfbad2;
   -webkit-animation: slide 15s linear infinite;
           animation: slide 15s linear infinite;
+}
+.omamori-container .marquee p .note {
+  margin-left: clamp(6px, 1vw, 12px);
+  margin-right: clamp(6px, 1vw, 12px);
 }
 @-webkit-keyframes slide {
   0% {
