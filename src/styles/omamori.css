@@ -161,8 +161,6 @@ footer {
 }
 .omamori-container p.normal-text {
   color: #324599;
-  -webkit-transition: opacity 0.2s ease;
-  transition: opacity 0.2s ease;
   font-size: clamp(10px, 2vw, 25px);
 }
 .omamori-container p.normal-text.top-p {
@@ -180,10 +178,14 @@ footer {
       -ms-flex-align: center;
           align-items: center;
   height: clamp(35px, 8vw, 100px);
+  -webkit-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 .omamori-container p.normal-text.bottom-p {
   margin-top: clamp(5px, 1vw, 8px);
   margin-bottom: 2.5vw;
+  -webkit-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 .omamori-container p.normal-text.fade-out {
   opacity: 0;

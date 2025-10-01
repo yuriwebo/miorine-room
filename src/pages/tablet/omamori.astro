@@ -91,8 +91,6 @@ import '../../styles/omamori.css';
 
     // 先让文字淡出
     topP.classList.add("fade-out");
-    bottomP.classList.add("fade-out");
-
     // 等过渡结束后，换文字再淡入
     topP.addEventListener('transitionend', () => {
       topP.innerHTML = topHtml;
@@ -102,6 +100,7 @@ import '../../styles/omamori.css';
       once: true
     })
 
+    bottomP.classList.add("fade-out");
     bottomP.addEventListener('transitionend', () => {
       bottomP.innerText = bottomText;
       bottomP.style.color = bottomColor;
