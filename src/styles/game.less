@@ -1,0 +1,108 @@
+@import "global.less";
+
+@ripple-inner-color: #f67b29;
+@ripple-outer-color: #fcf23e;
+
+.game-container {
+  height: 700px;
+  cursor: pointer;
+  background-image: url("@{images}/game.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+
+  #shooter-game {
+    position: relative;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    user-select: none; /* 禁止文字/图片被选中 */
+    -webkit-user-drag: none; /* 禁止 WebKit 浏览器拖拽 */
+
+    .enemy-container {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      .enemy {
+        width: 150px;
+        height: 150px;
+      }
+    }
+
+    #gun {
+      width: 80px;
+      // height: 40px;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    #next-stage {
+      display: none;
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      color: @white;
+    }
+
+    .ripple-wrapper {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      transform: translate(-50%, -50%);
+      pointer-events: none; /* 避免装饰元素拦截点击 */
+
+      .ripple() {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      /* 黄色外圈：快速放大后消失 */
+      .ripple-outer {
+        .ripple();
+        border: 0.5px solid @ripple-outer-color;
+        animation: ripple 0.2s ease-out forwards;
+      }
+
+      /* 橙色内圈：稍慢撑到外圈的大小后消失 */
+      .ripple-inner {
+        .ripple();
+        background: radial-gradient(
+          circle,
+          transparent 50%,
+          @ripple-inner-color 100%
+        );
+        animation: ripple 0.3s ease-out forwards;
+      }
+
+      @keyframes ripple {
+        0% {
+          transform: scale(0);
+          opacity: 1;
+        }
+        80% {
+          transform: scale(5);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(5);
+          opacity: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,178 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import gunImage from '../../images/gun.png';
+import prosperaImage from '../../images/prospera.png';
+import bandaiImage from '../../images/bandai.png';
+import dellingImage from '../../images/delling.png';
+import '../../styles/game.css';
+---
+<BaseLayout>
+  <div class="content game-container">
+    <div id="shooter-game">
+      <div class="enemy-container">
+        <img class="enemy" id="enemy1" src={dellingImage.src} alt="米总爹" draggable="false">
+        <img class="enemy" id="enemy2" src={prosperaImage.src} alt="狸猫妈" draggable="false">
+        <img class="enemy" id="enemy3" src={bandaiImage.src} alt="恐同万代老登" draggable="false">
+      </div>
+      <div id="next-stage">
+        <p id="countdown">10</p>
+        <p>
+          NEXT STAGE<br>
+          TOUCH SCREEN TO CONTINUE
+        </p>
+      </div>
+      <img id="gun" src={gunImage.src} alt="枪" draggable="false">
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  enum GameState {
+    Ready,      // 等待开始
+    Countdown,  // 倒计时中
+    Playing     // 游戏中
+  }
+
+  class Gun {
+    private element: HTMLDivElement;
+
+    constructor(element: HTMLDivElement) {
+      this.element = element;
+      this.reset();
+    }
+
+    shoot(): Animation {
+      return this.element.animate (
+        [
+          { left: "50%", easing: "ease-in-out" },
+          { left: "75px", easing: "ease-in-out" },
+          { left: "50%", easing: "ease-in-out" },
+          { left: "calc(100% - 75px)", easing: "ease-in-out" },
+        ],
+        {
+          duration: 2000,
+          fill: 'forwards' // 动画结束后，保持最后一帧的状态
+        }
+      );
+    }
+
+    reset() {
+      this.element.getAnimations().forEach(anim => anim.cancel()); // 清除动画冻结状态
+      this.element.style.left = "50%"; // 枪复位
+    }
+  }
+
+  class Countdown {
+    private element: HTMLDivElement;
+    private textElement: HTMLParagraphElement;
+    private timer: number | null = null;
+    private duration: number;
+    private onFinish: () => void;
+
+    constructor(element: HTMLDivElement, textElement: HTMLParagraphElement, duration: number, onFinish: () => void) {
+      this.element = element;
+      this.textElement = textElement;
+      this.duration = duration;
+      this.onFinish = onFinish;
+    }
+
+    start() {
+      this.element.style.display = "block"; // 显示倒计时
+      let countdown = this.duration;
+      this.textElement.innerText = countdown.toString();  // 初始值
+
+      this.timer = window.setInterval(() => {
+        countdown--;
+        this.textElement.innerText = countdown.toString();
+
+        // 倒计时自行结束
+        if (countdown < 0) {
+          this.cancel();
+        }
+      }, 1000);
+    }
+
+    cancel() {
+      if (this.timer !== null) {
+        clearInterval(this.timer);
+        this.timer = null;
+      }
+      this.element.style.display = "none"; // 隐藏倒计时
+      this.textElement.innerText = this.duration.toString(); // 回复倒计时初始值
+      this.onFinish();
+    }
+  }
+
+  // -------------------- 游戏控制器 --------------------
+  const gameContainer = document.querySelector(".game-container") as HTMLDivElement;
+  const gunElement = document.getElementById("gun") as HTMLDivElement;
+  const nextStage = document.getElementById("next-stage") as HTMLDivElement;
+  const countdownP = document.getElementById("countdown") as HTMLParagraphElement;
+  const shooterGame = document.getElementById("shooter-game") as HTMLDivElement;
+
+  const gun = new Gun(gunElement);
+  let state: GameState = GameState.Ready;
+
+  const countdown = new Countdown(nextStage, countdownP, 10, () => {
+    gun.reset();
+    state = GameState.Ready;
+  });
+
+  gameContainer.addEventListener("click", (e: MouseEvent) => {
+    if (state === GameState.Countdown) {
+      // 打断倒计时并复位枪
+      countdown.cancel();
+      return;
+    }
+
+    if (state === GameState.Ready) {
+      // 开始游戏
+      state = GameState.Playing;
+      const animation = gun.shoot();
+      animation.onfinish = () => {
+        countdown.start();
+        state = GameState.Countdown;
+      };
+    }
+
+    if (state === GameState.Playing) {
+      // 获取shooterGame在视口中的位置等
+      const rect = shooterGame.getBoundingClientRect();
+
+      // 获取点击处相对于shooterGame的坐标
+      // clientX/Y：点击处相对于视口的坐标
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      createRipple(shooterGame, x, y);
+    }
+  });
+
+  const createRipple = (game: HTMLElement, x: number, y: number) => {
+    const rippleWrapper = document.createElement("div");
+    rippleWrapper.className = "ripple-wrapper";
+
+    const outer = document.createElement("span");
+    outer.className = "ripple-outer";
+
+    const inner = document.createElement("span");
+    inner.className = "ripple-inner";
+
+    rippleWrapper.appendChild(outer);
+    rippleWrapper.appendChild(inner);
+
+    game.appendChild(rippleWrapper);
+
+    // 把圆心定位到点击位置
+    // offsetWidth/Height：元素的布局宽度（px）
+    rippleWrapper.style.left = `${x}px`;
+    rippleWrapper.style.top = `${y}px`;
+
+    // 动画结束后移除
+    inner.addEventListener("animationend", () => {
+      rippleWrapper.remove();
+    }, {
+      once: true
+    });
+  }
+</script>
