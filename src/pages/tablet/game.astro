@@ -34,9 +34,9 @@ import '../../styles/game.css';
   }
 
   class Gun {
-    private element: HTMLDivElement;
+    private element: HTMLImageElement;
 
-    constructor(element: HTMLDivElement) {
+    constructor(element: HTMLImageElement) {
       this.element = element;
       this.reset();
     }
@@ -105,7 +105,12 @@ import '../../styles/game.css';
 
   // -------------------- 游戏控制器 --------------------
   const gameContainer = document.querySelector(".game-container") as HTMLDivElement;
-  const gunElement = document.getElementById("gun") as HTMLDivElement;
+  const enemies = [
+    document.getElementById("enemy1") as HTMLImageElement,
+    document.getElementById("enemy2") as HTMLImageElement,
+    document.getElementById("enemy3") as HTMLImageElement,
+  ];
+  const gunElement = document.getElementById("gun") as HTMLImageElement;
   const nextStage = document.getElementById("next-stage") as HTMLDivElement;
   const countdownP = document.getElementById("countdown") as HTMLParagraphElement;
   const shooterGame = document.getElementById("shooter-game") as HTMLDivElement;
@@ -148,6 +153,7 @@ import '../../styles/game.css';
     }
   });
 
+  // 点击处动效
   const createRipple = (game: HTMLElement, x: number, y: number) => {
     const rippleWrapper = document.createElement("div");
     rippleWrapper.className = "ripple-wrapper";
