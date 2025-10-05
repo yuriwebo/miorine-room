@@ -52,6 +52,10 @@ import type { get } from "lodash";
       return this.currentIndex;
     }
 
+    get isMoving() {
+      return this.moving;
+    }
+
     moveLeft() {
       this.enqueue("left");
     }
@@ -210,6 +214,9 @@ import type { get } from "lodash";
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       createRipple(shooterGame, x, y);
+
+      // 枪正在移动中，不能击中敌人
+      if (gun.isMoving) return;
 
       const index = gun.index; // 获取当前枪位 0, 1, 2
       const targetEnemy = enemies[index];
