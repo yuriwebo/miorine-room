@@ -25,12 +25,26 @@
 
     .enemy-container {
       width: 100%;
-      display: flex;
-      justify-content: space-between;
+      position: relative;
 
       .enemy {
+        position: absolute;
         width: 150px;
         height: 150px;
+
+        &#enemy1 {
+          top: 0;
+          left: 0;
+        }
+        &#enemy2 {
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        &#enemy3 {
+          top: 0;
+          right: 0;
+        }
       }
     }
 

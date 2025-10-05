@@ -27,6 +27,8 @@ import '../../styles/game.css';
 </BaseLayout>
 
 <script>
+import type { get } from "lodash";
+
   enum GameState {
     Ready,      // 等待开始
     Countdown,  // 倒计时中
@@ -44,6 +46,10 @@ import '../../styles/game.css';
     constructor(element: HTMLImageElement) {
       this.element = element;
       this.reset();
+    }
+
+    get index() {
+      return this.currentIndex;
     }
 
     moveLeft() {
@@ -69,8 +75,7 @@ import '../../styles/game.css';
       if (nextMove === "right" && this.currentIndex < this.positions.length - 1) targetIndex++;
 
       if (targetIndex === this.currentIndex) {
-        // 移动无效（到边界），尝试下一个动作
-        this.tryMoveNext();
+        this.tryMoveNext(); // 移动无效（到边界），尝试下一个动作
         return;
       }
 
@@ -96,9 +101,7 @@ import '../../styles/game.css';
         this.updatePosition(); // 确保结束后定位准确
         anim.cancel(); // 清除动画状态
         this.moving = false;
-
-        // 动画结束后尝试执行队列中的下一个动作
-        this.tryMoveNext();
+        this.tryMoveNext();  // 执行队列中下一个动作
       };
     }
 
@@ -171,11 +174,13 @@ import '../../styles/game.css';
   let state: GameState = GameState.Ready;
 
   const countdown = new Countdown(nextStage, countdownP, 10, () => {
+    // 倒计时结束：重置敌人、枪位置、游戏状态
+    enemies.forEach(e => e.style.display = "block");
     gun.reset();
     state = GameState.Ready;
   });
 
-  // 键盘控制枪的移动
+  // 键盘控制左右移动（支持A/D + ←/→）
   window.addEventListener("keydown", (e) => {
     if (state !== GameState.Ready && state !== GameState.Playing) return;
 
@@ -194,26 +199,31 @@ import '../../styles/game.css';
       return;
     }
 
-    if (state === GameState.Ready) {
+    if (state === GameState.Ready || state === GameState.Playing) {
       // 开始游戏
       state = GameState.Playing;
-      // const animation = gun.shoot();
-      // animation.onfinish = () => {
-      //   countdown.start();
-      //   state = GameState.Countdown;
-      // };
-    }
 
-    if (state === GameState.Playing) {
       // 获取shooterGame在视口中的位置等
       const rect = shooterGame.getBoundingClientRect();
-
       // 获取点击处相对于shooterGame的坐标
       // clientX/Y：点击处相对于视口的坐标
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-
       createRipple(shooterGame, x, y);
+
+      const index = gun.index; // 获取当前枪位 0, 1, 2
+      const targetEnemy = enemies[index];
+      if (targetEnemy && targetEnemy.style.display !== "none") {
+        targetEnemy.style.display = "none";
+
+        // 检查是否所有敌人都消失
+        const allGone = enemies.every(e => e.style.display === "none");
+        if (allGone) {
+          // 全部打完，进入倒计时
+          state = GameState.Countdown;
+          countdown.start();
+        }
+      }
     }
   });
 
@@ -228,15 +238,14 @@ import '../../styles/game.css';
     const inner = document.createElement("span");
     inner.className = "ripple-inner";
 
-    rippleWrapper.appendChild(outer);
-    rippleWrapper.appendChild(inner);
-
-    game.appendChild(rippleWrapper);
+    rippleWrapper.append(outer, inner);
 
     // 把圆心定位到点击位置
     // offsetWidth/Height：元素的布局宽度（px）
     rippleWrapper.style.left = `${x}px`;
     rippleWrapper.style.top = `${y}px`;
+
+    game.appendChild(rippleWrapper);
 
     // 动画结束后移除
     inner.addEventListener("animationend", () => {

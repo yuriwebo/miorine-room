@@ -89,16 +89,26 @@ footer {
 }
 .game-container #shooter-game .enemy-container {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  position: relative;
 }
 .game-container #shooter-game .enemy-container .enemy {
+  position: absolute;
   width: 150px;
   height: 150px;
+}
+.game-container #shooter-game .enemy-container .enemy#enemy1 {
+  top: 0;
+  left: 0;
+}
+.game-container #shooter-game .enemy-container .enemy#enemy2 {
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.game-container #shooter-game .enemy-container .enemy#enemy3 {
+  top: 0;
+  right: 0;
 }
 .game-container #shooter-game #gun {
   width: 80px;
