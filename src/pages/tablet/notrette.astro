@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const decodedQuestion = "How are our tomatoes?";
+const expected = "I will always be attached to you, Miorine.";
+const failMsg = "Authentication failed";
+const successMsg = "Authenticated"
+const ending = "I love you. From Mom.";
+---
+<BaseLayout>
+  <div class="content notrette-container">
+    <h2>{decodedQuestion}</h2>
+    <p>
+      <label for="answer">Please enter</label>
+      <input type="text" id="answer" placeholder={expected}>
+    </p>
+    <p id="failOutput" style="display:none;">{failMsg}</p>
+    <p id="SuccessOutput" style="display:none;">{successMsg}</p>
+  </div>
+</BaseLayout>
+
+<script>
+  const expected = "I will always be attached to you, Miorine.";
+  const input = document.getElementById('answer') as HTMLInputElement;
+  const failOutput = document.getElementById('failOutput') as HTMLParagraphElement;
+  const SuccessOutput = document.getElementById('SuccessOutput') as HTMLParagraphElement;
+
+  if (input) {
+    input.addEventListener('keydown', (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        const inputValue = input.value;
+
+        if (inputValue === expected) {
+          SuccessOutput.style.display = "block";
+          failOutput.style.display = "none";
+        } else {
+          failOutput.style.display = "block";
+          SuccessOutput.style.display = "none";
+        }
+      }
+    });
+  }
+</script>
