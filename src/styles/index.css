@@ -68,66 +68,6 @@ footer {
   top: 1vw;
   left: 2vw;
 }
-.room-container .photos-container {
-  position: absolute;
-  top: 7vw;
-  left: 16vw;
-}
-.room-container .photos-container img {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 8vw;
-}
-.room-container .photos-container h2 {
-  position: absolute;
-  padding: 0.1em 0.4em;
-  margin: 0;
-  font-size: 1vw;
-  white-space: nowrap;
-  color: #6e79d7;
-  background-color: #ffffff;
-  visibility: hidden;
-  top: 2.5vw;
-  left: -0.2vw;
-}
-.room-container .photos-container:hover img {
-  -webkit-transform: rotate(-3deg);
-          transform: rotate(-3deg);
-}
-.room-container .photos-container:hover h2 {
-  visibility: visible;
-}
-.room-container .goods-container {
-  position: absolute;
-  top: 19.8vw;
-  left: 43.8vw;
-}
-.room-container .goods-container img {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 5vw;
-}
-.room-container .goods-container h2 {
-  position: absolute;
-  padding: 0.1em 0.4em;
-  margin: 0;
-  font-size: 1vw;
-  white-space: nowrap;
-  color: #6e79d7;
-  background-color: #ffffff;
-  visibility: hidden;
-  top: -1.5vw;
-  left: -1.3vw;
-}
-.room-container .goods-container:hover img {
-  -webkit-transform: rotate(-3deg);
-          transform: rotate(-3deg);
-}
-.room-container .goods-container:hover h2 {
-  visibility: visible;
-}
 .room-container .tablet-container {
   position: absolute;
   top: 16vw;
@@ -156,36 +96,6 @@ footer {
           transform: rotate(-3deg);
 }
 .room-container .tablet-container:hover h2 {
-  visibility: visible;
-}
-.room-container .books-container {
-  position: absolute;
-  top: 15vw;
-  left: 1vw;
-}
-.room-container .books-container img {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 7.5vw;
-}
-.room-container .books-container h2 {
-  position: absolute;
-  padding: 0.1em 0.4em;
-  margin: 0;
-  font-size: 1vw;
-  white-space: nowrap;
-  color: #6e79d7;
-  background-color: #ffffff;
-  visibility: hidden;
-  top: 2vw;
-  left: 0vw;
-}
-.room-container .books-container:hover img {
-  -webkit-transform: rotate(-3deg);
-          transform: rotate(-3deg);
-}
-.room-container .books-container:hover h2 {
   visibility: visible;
 }
 .room-container .about-container {
