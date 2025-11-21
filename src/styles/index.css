@@ -24,15 +24,13 @@ body {
           flex-direction: column;
   text-align: center;
   color: #6e79d7;
-  background-image: url("/src/images/pattern.svg");
 }
 header {
   width: 100%;
-  background-color: #6e79d7;
 }
 header a {
   text-decoration: none;
-  color: #ffffff;
+  color: #6e79d7;
 }
 main {
   -webkit-box-flex: 1;
@@ -48,12 +46,6 @@ main {
   border-image-source: url("/src/images/screen.svg");
   border-image-slice: 10% 7%;
   background-color: #ffffff;
-}
-footer {
-  width: 100%;
-  color: #6e79d7;
-  background-color: #ffffff;
-  padding: 20px;
 }
 .room-container {
   position: relative;
