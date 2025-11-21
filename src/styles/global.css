@@ -47,3 +47,7 @@ main {
   border-image-slice: 10% 7%;
   background-color: #ffffff;
 }
+footer {
+  width: 100%;
+  color: #919fe6;
+}

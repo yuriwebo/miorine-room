@@ -47,6 +47,10 @@ main {
   border-image-slice: 10% 7%;
   background-color: #ffffff;
 }
+footer {
+  width: 100%;
+  color: #919fe6;
+}
 .game-container {
   height: 700px;
   cursor: pointer;
