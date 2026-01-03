@@ -1,44 +1,103 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import '../../styles/notrette.css';
+
+const geneMap: Record<string, string> = {
+  // 小写
+  a: "AAA",
+  b: "AAC",
+  c: "AAG",
+  d: "AAT",
+  e: "ACA",
+  h: "ACT",
+  i: "AGA",
+  l: "AGT",
+  m: "ATA",
+  n: "ATC",
+  o: "ATG",
+  r: "CAC",
+  s: "CAG",
+  t: "CAT",
+  u: "CCA",
+  w: "CCG",
+  y: "CGA",
+
+  // 大写
+  H: "GTA",
+  I: "GTC",
+  M: "TAC",
+
+  //特殊字符
+  " ": "CGG",
+  ",": "CTA",
+  ".": "CGT",
+  "?": "CTG"
+};
+
+//将一段文字转换成基因序列组合
+const textToGeneSequence = (text: string) => {
+  return text
+    .split("")
+    .map(char => geneMap[char] || "") //若没有对应基因序列就忽略
+    .join("");
+}
 
 const decodedQuestion = "How are our tomatoes?";
-const expected = "I will always be attached to you, Miorine.";
+const encodedQuestion = textToGeneSequence(decodedQuestion);
+const decodedAnswer = "I will always be attached to you, Miorine.";
+const encodedAnswer = textToGeneSequence(decodedAnswer);
 const failMsg = "Authentication failed";
 const successMsg = "Authenticated"
 const ending = "I love you. From Mom.";
 ---
 <BaseLayout>
   <div class="content notrette-container">
-    <h2>{decodedQuestion}</h2>
-    <p>
+    <h2>
+      <span class="title">Emergency Console</span>
+    </h2>
+    <div class="question-container">
+      <div id="decoration-line"></div>
+      <span class="question top">{encodedQuestion}</span>
+      <span class="question bottom">{decodedQuestion}</span>
+    </div>
+    <div class="console">
       <label for="answer">Please enter</label>
-      <input type="text" id="answer" placeholder={expected}>
-    </p>
-    <p id="failOutput" style="display:none;">{failMsg}</p>
-    <p id="SuccessOutput" style="display:none;">{successMsg}</p>
+      <textarea id="answer" name="answer" spellcheck="false" autofocus>{encodedAnswer}</textarea>
+    </div>
+    <div class="footnote">
+      <span>QuietZero System Control Console</span>
+      <span>C-Block Access Point No. 4569-456-23 B</span>
+    </div>
+
+    <!-- 正确信息、错误信息 -->
+    <p class="output fail">{failMsg}</p>
+    <p class="output success">{successMsg}</p>
   </div>
 </BaseLayout>
 
 <script>
-  const expected = "I will always be attached to you, Miorine.";
-  const input = document.getElementById('answer') as HTMLInputElement;
-  const failOutput = document.getElementById('failOutput') as HTMLParagraphElement;
-  const SuccessOutput = document.getElementById('SuccessOutput') as HTMLParagraphElement;
+  const textArea = document.getElementById('answer') as HTMLTextAreaElement;
+  const failOutput = document.querySelector(".fail") as HTMLParagraphElement;
+  const successOutput = document.querySelector(".success") as HTMLParagraphElement;
 
-  if (input) {
-    input.addEventListener('keydown', (e) => {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        const inputValue = input.value;
+  const expected = textArea.defaultValue;  //期待值为初始值
 
-        if (inputValue === expected) {
-          SuccessOutput.style.display = "block";
-          failOutput.style.display = "none";
-        } else {
-          failOutput.style.display = "block";
-          SuccessOutput.style.display = "none";
-        }
+  window.addEventListener("load", () => {
+    textArea.value = expected;
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const textAreaVal = textArea.value;
+
+      if (textAreaVal === expected) {
+        successOutput.style.display = "block";
+        failOutput.style.display = "none";
+      } else {
+        failOutput.style.display = "block";
+        successOutput.style.display = "none";
       }
-    });
-  }
+    }
+  });
 </script>

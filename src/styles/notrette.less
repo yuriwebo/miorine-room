@@ -1,0 +1,173 @@
+@import "global.less";
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Orbitron:wght@400..900&display=swap");
+
+@thick-border: 1.8px solid @primary;
+@thin-border: 1px solid @primary;
+@big-square-size: 8px;
+@small-square-size: 6px;
+
+.notrette-container {
+  h2 {
+    background-color: @light;
+    font-weight: normal;
+    font-size: 20px;
+    margin: 0 0 40px;
+
+    .title {
+      background-color: @white;
+      padding: 0 12px;
+      font-family: "Orbitron", sans-serif;
+    }
+  }
+
+  .question-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: 0 auto;
+    border-top: @thick-border;
+    border-left: @thin-border;
+    border-right: @thin-border;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: @big-square-size;
+      height: @big-square-size;
+      background: @primary;
+      top: -12px;
+      background-color: @dark;
+    }
+
+    &::before {
+      left: -1px; //和边框贴齐
+    }
+    &::after {
+      right: -1px;
+    }
+
+    // 折线
+    #decoration-line {
+      position: absolute;
+      top: 10px;
+      width: 97.1%;
+      height: 53%;
+      border-left: @thin-border;
+      border-right: @thin-border;
+      border-bottom: @thin-border;
+
+      &::before,
+      &::after {
+        position: absolute;
+        content: "";
+        top: -3px;
+        display: inline-block;
+        width: @small-square-size;
+        height: @small-square-size;
+        background-color: @primary;
+      }
+
+      &::before {
+        left: -3px;
+      }
+
+      &::after {
+        right: -3px;
+      }
+    }
+
+    .question {
+      position: relative; // 置于装饰线之上
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: normal;
+      background-color: @white;
+
+      &.top {
+        font-size: 15px;
+        letter-spacing: 1px;
+        margin: 0 20px;
+        font-family: "Gowun Dodum", sans-serif;
+        color: @light;
+      }
+
+      &.bottom {
+        font-size: 30px;
+        font-family: "Orbitron", sans-serif;
+
+        &::before,
+        &::after {
+          content: "";
+          display: inline-block;
+          width: 5px;
+          height: 15px;
+          background-color: @primary;
+        }
+
+        &::before {
+          margin-right: 10px;
+        }
+
+        &::after {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  .console {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+    padding: 10px;
+    border: @thick-border;
+
+    label {
+      padding: 0 0 15px 20px;
+      font-family: "Orbitron", sans-serif;
+      color: @dark;
+    }
+
+    #answer {
+      width: 100%;
+      height: 150px;
+      overflow-y: scroll; // 溢出部分可滑动
+      -ms-overflow-style: none; //scroll bar非表示（IE・Edge）
+      scrollbar-width: none; //scroll bar非表示（Firefox）
+      border: none;
+      outline: none; //去除focus时边框
+      resize: none;
+      font-size: 18px;
+      color: @primary;
+      letter-spacing: 1px;
+      font-family: "Gowun Dodum", sans-serif;
+
+      // scroll bar非表示（Chrome・Safari）
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  .footnote {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 50px;
+    font-family: "Orbitron", sans-serif;
+
+    span:nth-child(2) {
+      font-size: 10px;
+    }
+  }
+
+  .output {
+    display: none;
+  }
+}

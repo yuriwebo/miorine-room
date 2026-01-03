@@ -1,0 +1,236 @@
+@font-face {
+  font-family: "Seele-1";
+  src: url("/public/fonts/Seele-One.otf") format("opentype");
+}
+@font-face {
+  font-family: "Seele-2";
+  src: url("/public/fonts/Seele-Two.otf") format("opentype");
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Seele-1", "Seele-2", sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  text-align: center;
+  color: #6e79d7;
+}
+header {
+  width: 100%;
+}
+header a {
+  text-decoration: none;
+  color: #6e79d7;
+}
+main {
+  flex: 1;
+}
+.content {
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+  border-style: solid;
+  border-width: 4vw 5vw;
+  border-image-source: url("/src/images/screen.svg");
+  border-image-slice: 10% 7%;
+  background-color: #ffffff;
+}
+footer {
+  width: 100%;
+  color: #919fe6;
+}
+@font-face {
+  font-family: 'Gowun Dodum';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/gowundodum/v12/3Jn5SD_00GqwlBnWc1TUJF0F.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/orbitron/v35/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1nyGy6xpg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/orbitron/v35/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1nyKS6xpg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/orbitron/v35/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1nyxSmxpg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/orbitron/v35/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1ny_Cmxpg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/orbitron/v35/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1nymymxpg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/orbitron/v35/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1nysimxpg.ttf) format('truetype');
+}
+.notrette-container h2 {
+  background-color: #919fe6;
+  font-weight: normal;
+  font-size: 20px;
+  margin: 0 0 40px;
+}
+.notrette-container h2 .title {
+  background-color: #ffffff;
+  padding: 0 12px;
+  font-family: "Orbitron", sans-serif;
+}
+.notrette-container .question-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto;
+  border-top: 1.8px solid #6e79d7;
+  border-left: 1px solid #6e79d7;
+  border-right: 1px solid #6e79d7;
+}
+.notrette-container .question-container::before,
+.notrette-container .question-container::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #6e79d7;
+  top: -12px;
+  background-color: #324599;
+}
+.notrette-container .question-container::before {
+  left: -1px;
+}
+.notrette-container .question-container::after {
+  right: -1px;
+}
+.notrette-container .question-container #decoration-line {
+  position: absolute;
+  top: 10px;
+  width: 97.1%;
+  height: 53%;
+  border-left: 1px solid #6e79d7;
+  border-right: 1px solid #6e79d7;
+  border-bottom: 1px solid #6e79d7;
+}
+.notrette-container .question-container #decoration-line::before,
+.notrette-container .question-container #decoration-line::after {
+  position: absolute;
+  content: "";
+  top: -3px;
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: #6e79d7;
+}
+.notrette-container .question-container #decoration-line::before {
+  left: -3px;
+}
+.notrette-container .question-container #decoration-line::after {
+  right: -3px;
+}
+.notrette-container .question-container .question {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: normal;
+  background-color: #ffffff;
+}
+.notrette-container .question-container .question.top {
+  font-size: 15px;
+  letter-spacing: 1px;
+  margin: 0 20px;
+  font-family: "Gowun Dodum", sans-serif;
+  color: #919fe6;
+}
+.notrette-container .question-container .question.bottom {
+  font-size: 30px;
+  font-family: "Orbitron", sans-serif;
+}
+.notrette-container .question-container .question.bottom::before,
+.notrette-container .question-container .question.bottom::after {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 15px;
+  background-color: #6e79d7;
+}
+.notrette-container .question-container .question.bottom::before {
+  margin-right: 10px;
+}
+.notrette-container .question-container .question.bottom::after {
+  margin-left: 10px;
+}
+.notrette-container .console {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+  padding: 10px;
+  border: 1.8px solid #6e79d7;
+}
+.notrette-container .console label {
+  padding: 0 0 15px 20px;
+  font-family: "Orbitron", sans-serif;
+  color: #324599;
+}
+.notrette-container .console #answer {
+  width: 100%;
+  height: 150px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 18px;
+  color: #6e79d7;
+  letter-spacing: 1px;
+  font-family: "Gowun Dodum", sans-serif;
+}
+.notrette-container .console #answer::-webkit-scrollbar {
+  display: none;
+}
+.notrette-container .footnote {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 50px;
+  font-family: "Orbitron", sans-serif;
+}
+.notrette-container .footnote span:nth-child(2) {
+  font-size: 10px;
+}
+.notrette-container .output {
+  display: none;
+}
