@@ -46,9 +46,6 @@ const decodedQuestion = "How are our tomatoes?";
 const encodedQuestion = textToGeneSequence(decodedQuestion);
 const decodedAnswer = "I will always be attached to you, Miorine.";
 const encodedAnswer = textToGeneSequence(decodedAnswer);
-const failMsg = "Authentication failed";
-const successMsg = "Authenticated"
-const ending = "I love you. From Mom.";
 ---
 <BaseLayout>
   <div class="content notrette-container">
@@ -63,15 +60,22 @@ const ending = "I love you. From Mom.";
     <div class="console">
       <label for="answer">Please enter</label>
       <textarea id="answer" name="answer" spellcheck="false" autofocus>{encodedAnswer}</textarea>
+
+      <!-- 正确信息、错误信息 -->
+      <dialog class="output fail">
+        <span>ERROR</span>
+        <span>Authentication failed</span>
+      </dialog>
+      <dialog class="output success">
+        <span>{decodedAnswer}</span>
+        <span>Authenticated</span>
+        <span>I love you. From Mom.</span>
+      </dialog>
     </div>
     <div class="footnote">
       <span>QuietZero System Control Console</span>
       <span>C-Block Access Point No. 4569-456-23 B</span>
     </div>
-
-    <!-- 正确信息、错误信息 -->
-    <p class="output fail">{failMsg}</p>
-    <p class="output success">{successMsg}</p>
   </div>
 </BaseLayout>
 

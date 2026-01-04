@@ -232,5 +232,24 @@ footer {
   font-size: 10px;
 }
 .notrette-container .output {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+.notrette-container .output.success span:nth-child(1) {
+  font-size: 30px;
+  font-family: "Orbitron", sans-serif;
+  color: #2ea6f5;
+  border-top: 1.8px solid #6e79d7;
+  border-bottom: 1.8px solid #6e79d7;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.notrette-container .output.success span:nth-child(2) {
+  color: #ffdc55;
+}
+.notrette-container .output.success span:nth-child(3) {
+  font-size: 30px;
+  font-family: "Orbitron", sans-serif;
+  color: #2ea6f5;
 }
