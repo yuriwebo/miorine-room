@@ -27,8 +27,6 @@ import '../../styles/game.css';
 </BaseLayout>
 
 <script>
-import type { get } from "lodash";
-
   enum GameState {
     Ready,      // 等待开始
     Countdown,  // 倒计时中
@@ -221,6 +219,8 @@ import type { get } from "lodash";
       const index = gun.index; // 获取当前枪位 0, 1, 2
       const targetEnemy = enemies[index];
       if (targetEnemy && targetEnemy.style.display !== "none") {
+        // shootEffect(); // 子弹动效
+
         targetEnemy.style.display = "none";
 
         // 检查是否所有敌人都消失
@@ -261,4 +261,8 @@ import type { get } from "lodash";
       once: true
     });
   }
+
+  // function shootEffect() {
+    
+  // }
 </script>
