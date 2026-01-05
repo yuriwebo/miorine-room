@@ -191,20 +191,24 @@ footer {
 .notrette-container .question-container .question.bottom::after {
   margin-left: 10px;
 }
-.notrette-container .console {
+.notrette-container .console-container {
+  height: 220px;
+  border: 1.8px solid #6e79d7;
+  margin: 0;
+  padding: 10px;
+}
+.notrette-container .console-container .console {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 0;
-  padding: 10px;
-  border: 1.8px solid #6e79d7;
+  display: none;
 }
-.notrette-container .console label {
+.notrette-container .console-container .console label {
   padding: 0 0 15px 20px;
   font-family: "Orbitron", sans-serif;
   color: #324599;
 }
-.notrette-container .console #answer {
+.notrette-container .console-container .console #answer {
   width: 100%;
   height: 150px;
   overflow-y: scroll;
@@ -218,7 +222,7 @@ footer {
   letter-spacing: 1px;
   font-family: "Gowun Dodum", sans-serif;
 }
-.notrette-container .console #answer::-webkit-scrollbar {
+.notrette-container .console-container .console #answer::-webkit-scrollbar {
   display: none;
 }
 .notrette-container .footnote {
@@ -231,12 +235,37 @@ footer {
 .notrette-container .footnote span:nth-child(2) {
   font-size: 10px;
 }
-.notrette-container .output {
-  display: flex;
-  flex-direction: column;
-  border: none;
+.notrette-container .output p {
+  margin: 0;
 }
-.notrette-container .output.success span:nth-child(1) {
+.notrette-container .output.fail {
+  width: 100%;
+  height: 100%;
+}
+.notrette-container .output.fail p:nth-child(1) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: transparent;
+  background-clip: text;
+  background-image: linear-gradient(#ef2d2a 30%, #ba2320 70%);
+  font-size: 100px;
+  font-weight: 500;
+  font-family: "Orbitron", sans-serif;
+  border-top: 1.8px solid #ef2d2a;
+  border-bottom: 1.8px solid #ef2d2a;
+}
+.notrette-container .output.fail p:nth-child(1) span {
+  color: #ef2d2a;
+  font-size: 120px;
+}
+.notrette-container .output.fail p:nth-child(2) {
+  color: #ffdc55;
+}
+.notrette-container .output.success {
+  display: none;
+}
+.notrette-container .output.success p:nth-child(1) {
   font-size: 30px;
   font-family: "Orbitron", sans-serif;
   color: #2ea6f5;
@@ -245,10 +274,10 @@ footer {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.notrette-container .output.success span:nth-child(2) {
+.notrette-container .output.success p:nth-child(2) {
   color: #ffdc55;
 }
-.notrette-container .output.success span:nth-child(3) {
+.notrette-container .output.success p:nth-child(3) {
   font-size: 30px;
   font-family: "Orbitron", sans-serif;
   color: #2ea6f5;

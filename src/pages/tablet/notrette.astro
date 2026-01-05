@@ -57,20 +57,23 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
       <span class="question top">{encodedQuestion}</span>
       <span class="question bottom">{decodedQuestion}</span>
     </div>
-    <div class="console">
-      <label for="answer">Please enter</label>
-      <textarea id="answer" name="answer" spellcheck="false" autofocus>{encodedAnswer}</textarea>
-
-      <!-- 正确信息、错误信息 -->
-      <dialog class="output fail">
-        <span>ERROR</span>
-        <span>Authentication failed</span>
-      </dialog>
-      <dialog class="output success">
-        <span>{decodedAnswer}</span>
-        <span>Authenticated</span>
-        <span>I love you. From Mom.</span>
-      </dialog>
+    <div class="console-container">
+      <!-- 终端输入模拟 -->
+      <div class="console">
+        <label for="answer">Please enter</label>
+        <textarea id="answer" name="answer" spellcheck="false" autofocus>{encodedAnswer}</textarea>
+      </div>
+      <!-- 错误信息 -->
+      <div class="output fail">
+        <p><span>[</span>ERROR<span>]</span></p>
+        <p>Authentication failed</p>
+      </div>
+      <!-- 正确信息 -->
+      <div class="output success">
+        <p>{decodedAnswer}</p>
+        <p>Authenticated</p>
+        <p>I love you. From Mom.</p>
+      </div>
     </div>
     <div class="footnote">
       <span>QuietZero System Control Console</span>
