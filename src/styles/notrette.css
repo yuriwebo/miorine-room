@@ -116,6 +116,8 @@ footer {
   border-top: 1.8px solid #6e79d7;
   border-left: 1px solid #6e79d7;
   border-right: 1px solid #6e79d7;
+  /* 大方块 */
+  /* 折线 */
 }
 .notrette-container .question-container::before,
 .notrette-container .question-container::after {
@@ -123,40 +125,40 @@ footer {
   position: absolute;
   width: 8px;
   height: 8px;
-  background: #6e79d7;
   top: -12px;
   background-color: #324599;
 }
 .notrette-container .question-container::before {
-  left: -1px;
+  left: calc(-1px);
 }
 .notrette-container .question-container::after {
-  right: -1px;
+  right: calc(-1px);
 }
 .notrette-container .question-container #decoration-line {
   position: absolute;
   top: 10px;
-  width: 97.1%;
+  width: 97%;
   height: 53%;
   border-left: 1px solid #6e79d7;
   border-right: 1px solid #6e79d7;
   border-bottom: 1px solid #6e79d7;
+  /* 小方块 */
 }
 .notrette-container .question-container #decoration-line::before,
 .notrette-container .question-container #decoration-line::after {
   position: absolute;
   content: "";
-  top: -3px;
+  top: calc(-3px);
   display: inline-block;
   width: 6px;
   height: 6px;
   background-color: #6e79d7;
 }
 .notrette-container .question-container #decoration-line::before {
-  left: -3px;
+  left: calc(-3.5px);
 }
 .notrette-container .question-container #decoration-line::after {
-  right: -3px;
+  right: calc(-3.5px);
 }
 .notrette-container .question-container .question {
   position: relative;
@@ -176,6 +178,7 @@ footer {
 .notrette-container .question-container .question.bottom {
   font-size: 30px;
   font-family: "Orbitron", sans-serif;
+  /* 小长方 */
 }
 .notrette-container .question-container .question.bottom::before,
 .notrette-container .question-container .question.bottom::after {
@@ -193,9 +196,9 @@ footer {
 }
 .notrette-container .console-container {
   height: 220px;
-  border: 1.8px solid #6e79d7;
   margin: 0;
   padding: 10px;
+  border: 1.8px solid #6e79d7;
 }
 .notrette-container .console-container .console {
   display: flex;
@@ -221,51 +224,83 @@ footer {
   color: #6e79d7;
   letter-spacing: 1px;
   font-family: "Gowun Dodum", sans-serif;
+  /* scroll bar非表示（Chrome・Safari） */
 }
 .notrette-container .console-container .console #answer::-webkit-scrollbar {
   display: none;
 }
-.notrette-container .footnote {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-top: 50px;
-  font-family: "Orbitron", sans-serif;
-}
-.notrette-container .footnote span:nth-child(2) {
-  font-size: 10px;
-}
-.notrette-container .output p {
+.notrette-container .console-container .output p {
   margin: 0;
 }
-.notrette-container .output.fail {
+.notrette-container .console-container .output.fail {
   width: 100%;
   height: 100%;
-}
-.notrette-container .output.fail p:nth-child(1) {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.notrette-container .console-container .output.fail p.error-txt {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  font-size: 100px;
+  font-weight: 900;
+  line-height: 1;
+  font-family: "Orbitron", sans-serif;
+  border-top: 1px solid #ef2d2a;
+  border-bottom: 1px solid #ef2d2a;
+  /* 实现error颜色渐变 */
   color: transparent;
   background-clip: text;
   background-image: linear-gradient(#ef2d2a 30%, #ba2320 70%);
-  font-size: 100px;
-  font-weight: 500;
-  font-family: "Orbitron", sans-serif;
-  border-top: 1.8px solid #ef2d2a;
-  border-bottom: 1.8px solid #ef2d2a;
+  /* 红小方块 */
 }
-.notrette-container .output.fail p:nth-child(1) span {
+.notrette-container .console-container .output.fail p.error-txt::before,
+.notrette-container .console-container .output.fail p.error-txt::after {
+  position: absolute;
+  content: "";
+  top: calc(-3.5px);
+  width: 6px;
+  height: 6px;
+  background-color: #ef2d2a;
+}
+.notrette-container .console-container .output.fail p.error-txt::before {
+  left: 0px;
+}
+.notrette-container .console-container .output.fail p.error-txt::after {
+  right: 0px;
+}
+.notrette-container .console-container .output.fail p.error-txt .bracket {
   color: #ef2d2a;
+  font-weight: 500;
   font-size: 120px;
+  /* 红小方块 */
 }
-.notrette-container .output.fail p:nth-child(2) {
+.notrette-container .console-container .output.fail p.error-txt .bracket::before,
+.notrette-container .console-container .output.fail p.error-txt .bracket::after {
+  position: absolute;
+  content: "";
+  bottom: calc(-3.5px);
+  width: 6px;
+  height: 6px;
+  background-color: #ef2d2a;
+}
+.notrette-container .console-container .output.fail p.error-txt .bracket::before {
+  left: 0px;
+}
+.notrette-container .console-container .output.fail p.error-txt .bracket::after {
+  right: 0px;
+}
+.notrette-container .console-container .output.fail p:last-child {
+  font-family: "Orbitron", sans-serif;
   color: #ffdc55;
+  font-size: 25px;
 }
-.notrette-container .output.success {
+.notrette-container .console-container .output.success {
   display: none;
 }
-.notrette-container .output.success p:nth-child(1) {
+.notrette-container .console-container .output.success p:nth-child(1) {
   font-size: 30px;
   font-family: "Orbitron", sans-serif;
   color: #2ea6f5;
@@ -274,11 +309,21 @@ footer {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.notrette-container .output.success p:nth-child(2) {
+.notrette-container .console-container .output.success p:nth-child(2) {
   color: #ffdc55;
 }
-.notrette-container .output.success p:nth-child(3) {
+.notrette-container .console-container .output.success p:nth-child(3) {
   font-size: 30px;
   font-family: "Orbitron", sans-serif;
   color: #2ea6f5;
+}
+.notrette-container .footnote {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 50px;
+  font-family: "Orbitron", sans-serif;
+}
+.notrette-container .footnote span:last-child {
+  font-size: 10px;
 }

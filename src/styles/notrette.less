@@ -1,8 +1,9 @@
 @import "global.less";
 @import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Orbitron:wght@400..900&display=swap");
 
+@thin-width: 1px;
 @thick-border-base: 1.8px solid;
-@thin-border-base: 1px solid;
+@thin-border-base: @thin-width solid;
 @big-square-size: 8px;
 @small-square-size: 6px;
 @square-font: "Orbitron", sans-serif;
@@ -38,51 +39,49 @@
     border-left: @thin-border-base @primary;
     border-right: @thin-border-base @primary;
 
+    /* 大方块 */
     &::before,
     &::after {
       content: "";
       position: absolute;
       width: @big-square-size;
       height: @big-square-size;
-      background: @primary;
       top: -12px;
       background-color: @dark;
     }
-
     &::before {
-      left: -1px; //和边框贴齐
+      left: calc(@thin-width * -1); //和边框贴齐
     }
     &::after {
-      right: -1px;
+      right: calc(@thin-width * -1);
     }
 
-    // 折线
+    /* 折线 */
     #decoration-line {
       position: absolute;
       top: 10px;
-      width: 97.1%;
+      width: 97%;
       height: 53%;
       border-left: @thin-border-base @primary;
       border-right: @thin-border-base @primary;
       border-bottom: @thin-border-base @primary;
 
+      /* 小方块 */
       &::before,
       &::after {
         position: absolute;
         content: "";
-        top: -3px;
+        top: calc(@small-square-size / -2);
         display: inline-block;
         width: @small-square-size;
         height: @small-square-size;
         background-color: @primary;
       }
-
       &::before {
-        left: -3px;
+        left: calc((@small-square-size + @thin-width) / -2);
       }
-
       &::after {
-        right: -3px;
+        right: calc((@small-square-size + @thin-width) / -2);
       }
     }
 
@@ -106,6 +105,7 @@
         font-size: 30px;
         font-family: @square-font;
 
+        /* 小长方 */
         &::before,
         &::after {
           content: "";
@@ -114,11 +114,9 @@
           height: 15px;
           background-color: @primary;
         }
-
         &::before {
           margin-right: 10px;
         }
-
         &::after {
           margin-left: 10px;
         }
@@ -128,9 +126,9 @@
 
   .console-container {
     height: 220px;
-    border: @thick-border-base @primary;
     margin: 0;
     padding: 10px;
+    border: @thick-border-base @primary;
 
     .console {
       display: flex;
@@ -159,9 +157,110 @@
         letter-spacing: 1px;
         font-family: @rounded-font;
 
-        // scroll bar非表示（Chrome・Safari）
+        /* scroll bar非表示（Chrome・Safari） */
         &::-webkit-scrollbar {
           display: none;
+        }
+      }
+    }
+
+    .output {
+      p {
+        margin: 0;
+      }
+
+      &.fail {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        p.error-txt {
+          position: relative;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 100px;
+          font-weight: 900;
+          line-height: 1; //避免多余行高
+          font-family: @square-font;
+          border-top: @thin-border-base @error-red;
+          border-bottom: @thin-border-base @error-red;
+          /* 实现error颜色渐变 */
+          color: transparent;
+          background-clip: text;
+          background-image: @error-gradient;
+
+          /* 红小方块 */
+          &::before,
+          &::after {
+            position: absolute;
+            content: "";
+            top: calc((@small-square-size + @thin-width) / -2);
+            width: @small-square-size;
+            height: @small-square-size;
+            background-color: @error-red;
+          }
+          &::before {
+            left: 0px;
+          }
+          &::after {
+            right: 0px;
+          }
+
+          .bracket {
+            color: @error-red;
+            font-weight: 500;
+            font-size: 120px;
+
+            /* 红小方块 */
+            &::before,
+            &::after {
+              position: absolute;
+              content: "";
+              bottom: calc((@small-square-size + @thin-width) / -2);
+              width: @small-square-size;
+              height: @small-square-size;
+              background-color: @error-red;
+            }
+            &::before {
+              left: 0px;
+            }
+            &::after {
+              right: 0px;
+            }
+          }
+        }
+
+        p:last-child {
+          font-family: @square-font;
+          color: @system-yellow;
+          font-size: 25px;
+        }
+      }
+
+      &.success {
+        display: none;
+
+        p:nth-child(1) {
+          font-size: 30px;
+          font-family: @square-font;
+          color: @success-blue;
+          border-top: @thick-border-base @primary;
+          border-bottom: @thick-border-base @primary;
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+
+        p:nth-child(2) {
+          color: @system-yellow;
+        }
+
+        p:nth-child(3) {
+          font-size: 30px;
+          font-family: @square-font;
+          color: @success-blue;
         }
       }
     }
@@ -174,69 +273,8 @@
     margin-top: 50px;
     font-family: @square-font;
 
-    span:nth-child(2) {
+    span:last-child {
       font-size: 10px;
-    }
-  }
-
-  .output {
-    p {
-      margin: 0;
-    }
-
-    &.fail {
-      width: 100%;
-      height: 100%;
-
-      p:nth-child(1) {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        // 实现error颜色渐变
-        color: transparent;
-        background-clip: text;
-        background-image: @error-gradient;
-
-        font-size: 100px;
-        font-weight: 500;
-        font-family: @square-font;
-        border-top: @thick-border-base @error-red;
-        border-bottom: @thick-border-base @error-red;
-
-        span {
-          color: @error-red;
-          font-size: 120px;
-        }
-      }
-
-      p:nth-child(2) {
-        color: @system-yellow;
-      }
-    }
-
-    &.success {
-      display: none;
-
-      p:nth-child(1) {
-        font-size: 30px;
-        font-family: @square-font;
-        color: @success-blue;
-        border-top: @thick-border-base @primary;
-        border-bottom: @thick-border-base @primary;
-        padding-top: 10px;
-        padding-bottom: 10px;
-      }
-
-      p:nth-child(2) {
-        color: @system-yellow;
-      }
-
-      p:nth-child(3) {
-        font-size: 30px;
-        font-family: @square-font;
-        color: @success-blue;
-      }
     }
   }
 }
