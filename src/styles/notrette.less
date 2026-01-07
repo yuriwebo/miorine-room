@@ -192,23 +192,6 @@
           background-clip: text;
           background-image: @error-gradient;
 
-          /* 红小方块 */
-          &::before,
-          &::after {
-            position: absolute;
-            content: "";
-            top: calc((@small-square-size + @thin-width) / -2);
-            width: @small-square-size;
-            height: @small-square-size;
-            background-color: @error-red;
-          }
-          &::before {
-            left: 0px;
-          }
-          &::after {
-            right: 0px;
-          }
-
           .bracket {
             color: @error-red;
             font-weight: 500;
@@ -219,10 +202,17 @@
             &::after {
               position: absolute;
               content: "";
-              bottom: calc((@small-square-size + @thin-width) / -2);
               width: @small-square-size;
               height: @small-square-size;
               background-color: @error-red;
+            }
+            &.left::before,
+            &.left::after {
+              top: calc((@small-square-size + @thin-width) / -2);
+            }
+            &.right::before,
+            &.right::after {
+              bottom: calc((@small-square-size + @thin-width) / -2);
             }
             &::before {
               left: 0px;

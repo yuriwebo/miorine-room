@@ -254,22 +254,6 @@ footer {
   color: transparent;
   background-clip: text;
   background-image: linear-gradient(#ef2d2a 30%, #ba2320 70%);
-  /* 红小方块 */
-}
-.notrette-container .console-container .output.fail p.error-txt::before,
-.notrette-container .console-container .output.fail p.error-txt::after {
-  position: absolute;
-  content: "";
-  top: calc(-3.5px);
-  width: 6px;
-  height: 6px;
-  background-color: #ef2d2a;
-}
-.notrette-container .console-container .output.fail p.error-txt::before {
-  left: 0px;
-}
-.notrette-container .console-container .output.fail p.error-txt::after {
-  right: 0px;
 }
 .notrette-container .console-container .output.fail p.error-txt .bracket {
   color: #ef2d2a;
@@ -281,10 +265,17 @@ footer {
 .notrette-container .console-container .output.fail p.error-txt .bracket::after {
   position: absolute;
   content: "";
-  bottom: calc(-3.5px);
   width: 6px;
   height: 6px;
   background-color: #ef2d2a;
+}
+.notrette-container .console-container .output.fail p.error-txt .bracket.left::before,
+.notrette-container .console-container .output.fail p.error-txt .bracket.left::after {
+  top: calc(-3.5px);
+}
+.notrette-container .console-container .output.fail p.error-txt .bracket.right::before,
+.notrette-container .console-container .output.fail p.error-txt .bracket.right::after {
+  bottom: calc(-3.5px);
 }
 .notrette-container .console-container .output.fail p.error-txt .bracket::before {
   left: 0px;
