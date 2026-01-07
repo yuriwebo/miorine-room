@@ -67,20 +67,22 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
       <div class="output fail">
         <p class="error-txt">
           <span class="bracket left">[</span>
-          <span>E</span>
-          <span>R</span>
-          <span>R</span>
-          <span>O</span>
-          <span>R</span>
+          {"ERROR".split("").map(letter => (
+            <span>{letter}</span>
+          ))}
           <span class="bracket right">]</span>
         </p>
         <p>Authentication failed</p>
       </div>
       <!-- 正确信息 -->
       <div class="output success">
-        <p>{decodedAnswer}</p>
+        <p>
+          {decodedAnswer.split(" ").map(word => (
+            <span>{word}</span>
+          ))}
+        </p>
         <p>Authenticated</p>
-        <p>I love you. From Mom.</p>
+        <!-- <p>I love you. From Mom.</p> -->
       </div>
     </div>
     <div class="footnote">

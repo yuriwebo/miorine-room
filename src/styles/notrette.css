@@ -195,16 +195,16 @@ footer {
   margin-left: 10px;
 }
 .notrette-container .console-container {
+  position: relative;
   height: 220px;
   margin: 0;
-  padding: 10px;
+  padding: 15px;
   border: 1.8px solid #6e79d7;
 }
 .notrette-container .console-container .console {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  display: none;
 }
 .notrette-container .console-container .console label {
   padding: 0 0 15px 20px;
@@ -228,6 +228,9 @@ footer {
 }
 .notrette-container .console-container .console #answer::-webkit-scrollbar {
   display: none;
+}
+.notrette-container .console-container .output {
+  visibility: hidden;
 }
 .notrette-container .console-container .output p {
   margin: 0;
@@ -289,24 +292,34 @@ footer {
   font-size: 25px;
 }
 .notrette-container .console-container .output.success {
-  display: none;
+  position: absolute;
+  top: 15px;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.notrette-container .console-container .output.success p:nth-child(1) {
-  font-size: 30px;
+.notrette-container .console-container .output.success p:first-child {
+  font-size: 35px;
+  font-weight: 500;
   font-family: "Orbitron", sans-serif;
   color: #2ea6f5;
   border-top: 1.8px solid #6e79d7;
   border-bottom: 1.8px solid #6e79d7;
   padding-top: 10px;
   padding-bottom: 10px;
+  /* 调整文字间距以对齐p长度 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.notrette-container .console-container .output.success p:nth-child(2) {
+.notrette-container .console-container .output.success p:last-child {
+  position: relative;
+  top: 12px;
+  font-size: 20px;
   color: #ffdc55;
-}
-.notrette-container .console-container .output.success p:nth-child(3) {
-  font-size: 30px;
-  font-family: "Orbitron", sans-serif;
-  color: #2ea6f5;
 }
 .notrette-container .footnote {
   display: flex;

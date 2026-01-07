@@ -6,6 +6,7 @@
 @thin-border-base: @thin-width solid;
 @big-square-size: 8px;
 @small-square-size: 6px;
+@console-padding: 15px;
 @square-font: "Orbitron", sans-serif;
 @rounded-font: "Gowun Dodum", sans-serif;
 @success-blue: #2ea6f5;
@@ -125,9 +126,10 @@
   }
 
   .console-container {
+    position: relative;
     height: 220px;
     margin: 0;
-    padding: 10px;
+    padding: @console-padding;
     border: @thick-border-base @primary;
 
     .console {
@@ -135,7 +137,7 @@
       flex-direction: column;
       align-items: flex-start;
 
-      display: none;
+      // display: none;
 
       label {
         padding: 0 0 15px 20px;
@@ -165,6 +167,8 @@
     }
 
     .output {
+      visibility: hidden;
+
       p {
         margin: 0;
       }
@@ -231,27 +235,42 @@
       }
 
       &.success {
-        display: none;
+        position: absolute;
+        top: @console-padding;
+        bottom: @console-padding;
+        left: @console-padding;
+        right: @console-padding;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
-        p:nth-child(1) {
-          font-size: 30px;
+        p:first-child {
+          font-size: 35px;
+          font-weight: 500;
           font-family: @square-font;
           color: @success-blue;
           border-top: @thick-border-base @primary;
           border-bottom: @thick-border-base @primary;
           padding-top: 10px;
           padding-bottom: 10px;
+          /* 调整文字间距以对齐p长度 */
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
         }
 
-        p:nth-child(2) {
+        p:last-child {
+          position: relative;
+          top: 12px;
+          font-size: 20px;
           color: @system-yellow;
         }
 
-        p:nth-child(3) {
-          font-size: 30px;
-          font-family: @square-font;
-          color: @success-blue;
-        }
+        // p:nth-child(3) {
+        //   font-size: 30px;
+        //   font-family: @square-font;
+        //   color: @success-blue;
+        // }
       }
     }
   }
