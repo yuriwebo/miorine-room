@@ -321,11 +321,28 @@ footer {
   font-size: 20px;
   color: #ffdc55;
 }
+.notrette-container .console-container .output.ending {
+  position: absolute;
+  top: -58px;
+  bottom: -58px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  font-weight: 500;
+  font-family: "Orbitron", sans-serif;
+  color: #2ea6f5;
+  background-image: url("/src/images/console-ending.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
 .notrette-container .footnote {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin-top: 50px;
+  margin-top: 60px;
   font-family: "Orbitron", sans-serif;
 }
 .notrette-container .footnote span:last-child {
