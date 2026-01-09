@@ -1,5 +1,5 @@
 @import "global.less";
-@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Orbitron:wght@400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@125,200..900&family=Orbitron:wght@400..900&display=swap");
 
 @thin-width: 1px;
 @thick-border-base: 1.8px solid;
@@ -8,7 +8,7 @@
 @small-square-size: 6px;
 @console-padding: 15px;
 @square-font: "Orbitron", sans-serif;
-@rounded-font: "Gowun Dodum", sans-serif;
+@rounded-font: "Inconsolata", monospace;
 @success-blue: #2ea6f5;
 @system-yellow: #ffdc55;
 @error-red: #ef2d2a;
@@ -136,9 +136,10 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      padding: 0 20px;
 
       label {
-        padding: 0 0 15px 20px;
+        margin-bottom: 15px;
         font-family: @square-font;
         color: @dark;
       }
@@ -146,20 +147,20 @@
       #answer {
         width: 100%;
         height: 150px;
-        overflow-y: scroll; // 溢出部分可滑动
-        -ms-overflow-style: none; //scroll bar非表示（IE・Edge）
-        scrollbar-width: none; //scroll bar非表示（Firefox）
         border: none;
         outline: none; //去除focus时边框
         resize: none;
-        font-size: 18px;
-        color: @primary;
         letter-spacing: 1px;
+        font-size: 23px;
+        font-weight: 300;
         font-family: @rounded-font;
-
-        /* scroll bar非表示（Chrome・Safari） */
+        color: @primary;
+        overflow-y: scroll; //溢出部分可滑动
+        /* scroll bar非表示 */
+        -ms-overflow-style: none; //IE・Edge
+        scrollbar-width: none; //Firefox
         &::-webkit-scrollbar {
-          display: none;
+          display: none; //Chrome・Safari
         }
       }
     }

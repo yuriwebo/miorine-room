@@ -46,11 +46,68 @@ footer {
   color: #919fe6;
 }
 @font-face {
-  font-family: 'Gowun Dodum';
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 200;
+  font-stretch: expanded;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inconsolata/v37/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmMQLYxYWI2qfdm7LppwU8aRo.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 300;
+  font-stretch: expanded;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inconsolata/v37/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmMQLYxYWI2qfdm7Lpp9s8aRo.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inconsolata';
   font-style: normal;
   font-weight: 400;
+  font-stretch: expanded;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/gowundodum/v12/3Jn5SD_00GqwlBnWc1TUJF0F.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/inconsolata/v37/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmMQLYxYWI2qfdm7Lpp4U8aRo.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: expanded;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inconsolata/v37/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmMQLYxYWI2qfdm7Lpp7c8aRo.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: expanded;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inconsolata/v37/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmMQLYxYWI2qfdm7Lpp1s7aRo.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: expanded;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inconsolata/v37/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmMQLYxYWI2qfdm7Lpp2I7aRo.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: expanded;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inconsolata/v37/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmMQLYxYWI2qfdm7LppwU7aRo.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: expanded;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inconsolata/v37/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmMQLYxYWI2qfdm7Lppyw7aRo.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Orbitron';
@@ -172,7 +229,7 @@ footer {
   font-size: 15px;
   letter-spacing: 1px;
   margin: 0 20px;
-  font-family: "Gowun Dodum", sans-serif;
+  font-family: "Inconsolata", monospace;
   color: #919fe6;
 }
 .notrette-container .question-container .question.bottom {
@@ -205,26 +262,28 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding: 0 20px;
 }
 .notrette-container .console-container .console label {
-  padding: 0 0 15px 20px;
+  margin-bottom: 15px;
   font-family: "Orbitron", sans-serif;
   color: #324599;
 }
 .notrette-container .console-container .console #answer {
   width: 100%;
   height: 150px;
-  overflow-y: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   border: none;
   outline: none;
   resize: none;
-  font-size: 18px;
-  color: #6e79d7;
   letter-spacing: 1px;
-  font-family: "Gowun Dodum", sans-serif;
-  /* scroll bar非表示（Chrome・Safari） */
+  font-size: 23px;
+  font-weight: 300;
+  font-family: "Inconsolata", monospace;
+  color: #6e79d7;
+  overflow-y: scroll;
+  /* scroll bar非表示 */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 .notrette-container .console-container .console #answer::-webkit-scrollbar {
   display: none;
