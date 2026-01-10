@@ -65,11 +65,12 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
           id="answer"
           name="answer"
           spellcheck="false"
-          autofocus>{encodedAnswer}
+          autofocus>
+          {encodedAnswer}
         </textarea>
       </div>
       <!-- 错误信息 -->
-      <div class="output fail">
+      <div class="output fail hide">
         <p class="error-txt">
           <span class="bracket left">[</span>
           {"ERROR".split("").map(letter => (
@@ -80,7 +81,7 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
         <p>Authentication failed</p>
       </div>
       <!-- 正确信息 -->
-      <div class="output success">
+      <div class="output success hide">
         <p>
           {decodedAnswer.split(" ").map(word => (
             <span>{word}</span>
@@ -89,7 +90,7 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
         <p>Authenticated</p>
       </div>
       <!-- happy ending信息 -->
-      <div class="output ending">
+      <div class="output ending hide">
         <p>I love you. From Mom.</p>
       </div>
     </div>
@@ -101,9 +102,10 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
 </BaseLayout>
 
 <script>
+  const console = document.querySelector(".console") as HTMLDivElement;
   const textArea = document.getElementById('answer') as HTMLTextAreaElement;
-  const failOutput = document.querySelector(".fail") as HTMLParagraphElement;
-  const successOutput = document.querySelector(".success") as HTMLParagraphElement;
+  const failOutput = document.querySelector(".fail") as HTMLDivElement;
+  const successOutput = document.querySelector(".success") as HTMLDivElement;
 
   const expected = textArea.defaultValue;  //期待值为初始值
 
@@ -117,11 +119,15 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
       const textAreaVal = textArea.value;
 
       if (textAreaVal === expected) {
-        successOutput.style.display = "block";
-        failOutput.style.display = "none";
+        successOutput.classList.remove("hide");
+
+        console.classList.add("hide");
+        failOutput.classList.add("hide");
       } else {
-        failOutput.style.display = "block";
-        successOutput.style.display = "none";
+        failOutput.classList.remove("hide");
+
+        console.classList.add("hide");
+        successOutput.classList.add("hide");
       }
     }
   });

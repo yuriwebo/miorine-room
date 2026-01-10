@@ -288,9 +288,6 @@ footer {
 .notrette-container .console-container .console #answer::-webkit-scrollbar {
   display: none;
 }
-.notrette-container .console-container .output {
-  visibility: hidden;
-}
 .notrette-container .console-container .output p {
   margin: 0;
 }
@@ -396,6 +393,9 @@ footer {
   background-image: url("/src/images/console-ending.svg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
+}
+.notrette-container .console-container .hide {
+  display: none !important;
 }
 .notrette-container .footnote {
   display: flex;
