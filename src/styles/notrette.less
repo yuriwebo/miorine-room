@@ -136,20 +136,22 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      height: 100%;
       padding: 0 20px;
 
       label {
-        margin-bottom: 15px;
         font-family: @square-font;
         color: @dark;
       }
 
       #answer {
+        margin-top: auto; //贴底
         width: 100%;
         height: 150px;
         border: none;
         outline: none; //去除focus时边框
         resize: none;
+        padding: 0; //去除默认padding
         letter-spacing: 1px;
         font-size: 23px;
         font-weight: 300;

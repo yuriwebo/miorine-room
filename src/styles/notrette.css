@@ -262,19 +262,21 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  height: 100%;
   padding: 0 20px;
 }
 .notrette-container .console-container .console label {
-  margin-bottom: 15px;
   font-family: "Orbitron", sans-serif;
   color: #324599;
 }
 .notrette-container .console-container .console #answer {
+  margin-top: auto;
   width: 100%;
   height: 150px;
   border: none;
   outline: none;
   resize: none;
+  padding: 0;
   letter-spacing: 1px;
   font-size: 23px;
   font-weight: 300;

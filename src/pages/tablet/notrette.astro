@@ -102,12 +102,14 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
 </BaseLayout>
 
 <script>
-  const console = document.querySelector(".console") as HTMLDivElement;
+  const consoleDiv = document.querySelector(".console") as HTMLDivElement;
   const textArea = document.getElementById('answer') as HTMLTextAreaElement;
   const failOutput = document.querySelector(".fail") as HTMLDivElement;
   const successOutput = document.querySelector(".success") as HTMLDivElement;
 
-  const expected = textArea.defaultValue;  //期待值为初始值
+  //期待值为初始值
+  //消除textarea标签内所有空格
+  const expected = textArea.defaultValue.trim();
 
   window.addEventListener("load", () => {
     textArea.value = expected;
@@ -121,12 +123,12 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
       if (textAreaVal === expected) {
         successOutput.classList.remove("hide");
 
-        console.classList.add("hide");
+        consoleDiv.classList.add("hide");
         failOutput.classList.add("hide");
       } else {
         failOutput.classList.remove("hide");
 
-        console.classList.add("hide");
+        consoleDiv.classList.add("hide");
         successOutput.classList.add("hide");
       }
     }
