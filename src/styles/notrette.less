@@ -133,31 +133,38 @@
     border: @thick-border-base @primary;
 
     .console {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      display: grid;
+      gap: 10px;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto 1fr;
+      grid-template-areas:
+        ". label"
+        "prefix answer";
+      text-align: left;
       height: 100%;
-      padding: 0 20px;
 
-      label {
+      .label {
+        grid-area: label;
         font-family: @square-font;
         color: @dark;
       }
 
-      #answer {
-        margin-top: auto; //贴底
-        width: 100%;
-        height: 150px;
-        border: none;
+      .prefix {
+        grid-area: prefix;
+        font-size: 23px;
+        font-family: @rounded-font;
+      }
+
+      .answer {
+        grid-area: answer;
         outline: none; //去除focus时边框
-        resize: none;
-        padding: 0; //去除默认padding
         letter-spacing: 1px;
         font-size: 23px;
         font-weight: 300;
         font-family: @rounded-font;
-        color: @primary;
-        overflow-y: scroll; //溢出部分可滑动
+        white-space: pre-wrap; //保留空格和手动换行、自动换行
+        overflow-wrap: break-word; //自动换行（拆分长单词
+        overflow-y: auto; //溢出部分可滑动
         /* scroll bar非表示 */
         -ms-overflow-style: none; //IE・Edge
         scrollbar-width: none; //Firefox

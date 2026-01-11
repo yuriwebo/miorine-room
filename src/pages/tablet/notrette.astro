@@ -60,14 +60,9 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
     <div class="console-container">
       <!-- 终端输入模拟 -->
       <div class="console">
-        <label for="answer">Please enter</label>
-        <textarea
-          id="answer"
-          name="answer"
-          spellcheck="false"
-          autofocus>
-          {encodedAnswer}
-        </textarea>
+        <span class="label">Please enter</span>
+        <span class="prefix">&gt;</span>
+        <div class="answer" contenteditable="plaintext-only" spellcheck="false" autofocus="true">{encodedAnswer}</div>
       </div>
       <!-- 错误信息 -->
       <div class="output fail hide">
@@ -103,24 +98,19 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
 
 <script>
   const consoleDiv = document.querySelector(".console") as HTMLDivElement;
-  const textArea = document.getElementById('answer') as HTMLTextAreaElement;
+  const answerDiv = document.getElementById('answer') as HTMLDivElement;
   const failOutput = document.querySelector(".fail") as HTMLDivElement;
   const successOutput = document.querySelector(".success") as HTMLDivElement;
 
   //期待值为初始值
-  //消除textarea标签内所有空格
-  const expected = textArea.defaultValue.trim();
-
-  window.addEventListener("load", () => {
-    textArea.value = expected;
-  });
+  const expected = answerDiv.textContent;
 
   window.addEventListener('keydown', (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      const textAreaVal = textArea.value;
+      const answer = answerDiv.textContent;
 
-      if (textAreaVal === expected) {
+      if (answer === expected) {
         successOutput.classList.remove("hide");
 
         consoleDiv.classList.add("hide");

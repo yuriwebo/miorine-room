@@ -259,35 +259,39 @@ footer {
   border: 1.8px solid #6e79d7;
 }
 .notrette-container .console-container .console {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: ". label" "prefix answer";
+  text-align: left;
   height: 100%;
-  padding: 0 20px;
 }
-.notrette-container .console-container .console label {
+.notrette-container .console-container .console .label {
+  grid-area: label;
   font-family: "Orbitron", sans-serif;
   color: #324599;
 }
-.notrette-container .console-container .console #answer {
-  margin-top: auto;
-  width: 100%;
-  height: 150px;
-  border: none;
+.notrette-container .console-container .console .prefix {
+  grid-area: prefix;
+  font-size: 23px;
+  font-family: "Inconsolata", monospace;
+}
+.notrette-container .console-container .console .answer {
+  grid-area: answer;
   outline: none;
-  resize: none;
-  padding: 0;
   letter-spacing: 1px;
   font-size: 23px;
   font-weight: 300;
   font-family: "Inconsolata", monospace;
-  color: #6e79d7;
-  overflow-y: scroll;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  overflow-y: auto;
   /* scroll bar非表示 */
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-.notrette-container .console-container .console #answer::-webkit-scrollbar {
+.notrette-container .console-container .console .answer::-webkit-scrollbar {
   display: none;
 }
 .notrette-container .console-container .output p {
