@@ -60,9 +60,9 @@
     /* 折线 */
     #decoration-line {
       position: absolute;
-      top: 10px;
+      top: 14px;
       width: 97%;
-      height: 53%;
+      height: 45%;
       border-left: @thin-border-base @primary;
       border-right: @thin-border-base @primary;
       border-bottom: @thin-border-base @primary;
@@ -87,17 +87,16 @@
     }
 
     .question {
-      position: relative; // 置于装饰线之上
+      position: relative; //置于装饰线之上
       display: flex;
       justify-content: center;
       align-items: center;
-      font-weight: normal;
       background-color: @white;
 
       &.top {
         font-size: 15px;
         letter-spacing: 1px;
-        margin: 0 20px;
+        margin: 5px 20px 0;
         font-family: @rounded-font;
         color: @light;
       }
@@ -105,14 +104,15 @@
       &.bottom {
         font-size: 30px;
         font-family: @square-font;
+        line-height: 1em; //自己的font-size大小
 
         /* 小长方 */
         &::before,
         &::after {
           content: "";
           display: inline-block;
-          width: 5px;
-          height: 15px;
+          width: 4px;
+          height: 13px;
           background-color: @primary;
         }
         &::before {
