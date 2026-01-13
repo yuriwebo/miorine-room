@@ -97,15 +97,17 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
 
 <script>
   const consoleDiv = document.querySelector(".console") as HTMLDivElement;
-  const answerDiv = document.getElementById('answer') as HTMLDivElement;
+  const answerDiv = document.querySelector('.answer') as HTMLDivElement;
   const failOutput = document.querySelector(".fail") as HTMLDivElement;
   const successOutput = document.querySelector(".success") as HTMLDivElement;
 
   //期待值为初始值
   const expected = answerDiv.textContent;
 
-  window.addEventListener('keydown', (e) => {
-    if (e.key === "Enter") {
+  answerDiv.addEventListener('keydown', (e) => {
+    // Shift + Enter：正常换行，不拦截
+    // 纯 Enter：触发 console 行为
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       const answer = answerDiv.textContent;
 
