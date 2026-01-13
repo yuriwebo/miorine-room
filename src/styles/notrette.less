@@ -1,5 +1,5 @@
 @import "global.less";
-@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@125,200..900&family=Kosugi+Maru&family=Orbitron:wght@400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@125,200..900&family=Orbitron:wght@400..900&display=swap");
 
 @thin-width: 1px;
 @thick-border-base: 1.8px solid;
@@ -156,7 +156,7 @@
         font-size: 23px;
         line-height: 1.6em;
         color: @dark;
-        font-family: "Kosugi Maru", sans-serif;
+        font-family: @rounded-font;
       }
 
       .answer {
@@ -167,15 +167,18 @@
         line-height: 1.6em;
         font-weight: 300;
         font-family: @rounded-font;
-        white-space: pre-wrap; //保留空格和手动换行、自动换行
-        overflow-wrap: break-word; //自动换行（拆分长单词
+        white-space: break-spaces;
+        word-break: break-all;
+        overflow-wrap: anywhere;
+        line-break: normal; //解决Safari行首空格异常换行
+        -webkit-line-break: normal;
         overflow-y: auto; //溢出部分可滑动
         /* scroll bar非表示 */
-        -ms-overflow-style: none; //IE・Edge
-        scrollbar-width: none; //Firefox
-        &::-webkit-scrollbar {
-          display: none; //Chrome・Safari
-        }
+        // -ms-overflow-style: none; //IE・Edge
+        // scrollbar-width: none; //Firefox
+        // &::-webkit-scrollbar {
+        //   display: none; //Chrome・Safari
+        // }
       }
     }
 
