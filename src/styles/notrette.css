@@ -110,6 +110,13 @@ footer {
   src: url(https://fonts.gstatic.com/s/inconsolata/v37/QldgNThLqRwH-OJ1UHjlKENVzkWGVkL3GZQmMQLYxYWI2qfdm7Lppyw7aRo.ttf) format('truetype');
 }
 @font-face {
+  font-family: 'Kosugi Maru';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/kosugimaru/v17/0nksC9PgP_wGh21A2KeqGiTq.ttf) format('truetype');
+}
+@font-face {
   font-family: 'Orbitron';
   font-style: normal;
   font-weight: 400;
@@ -260,10 +267,11 @@ footer {
 }
 .notrette-container .console-container .console {
   display: grid;
-  gap: 10px;
+  row-gap: 10px;
+  column-gap: 4px;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr;
-  grid-template-areas: ". label" "prefix answer";
+  grid-template-areas: ". label" "arrow answer";
   text-align: left;
   height: 100%;
 }
@@ -271,17 +279,21 @@ footer {
   grid-area: label;
   font-family: "Orbitron", sans-serif;
   color: #324599;
+  margin-left: 5px;
 }
-.notrette-container .console-container .console .prefix {
-  grid-area: prefix;
+.notrette-container .console-container .console .arrow {
+  grid-area: arrow;
   font-size: 23px;
-  font-family: "Inconsolata", monospace;
+  line-height: 1.6em;
+  color: #324599;
+  font-family: "Kosugi Maru", sans-serif;
 }
 .notrette-container .console-container .console .answer {
   grid-area: answer;
   outline: none;
-  letter-spacing: 1px;
+  letter-spacing: 0.05em;
   font-size: 23px;
+  line-height: 1.6em;
   font-weight: 300;
   font-family: "Inconsolata", monospace;
   white-space: pre-wrap;

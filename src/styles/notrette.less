@@ -1,5 +1,5 @@
 @import "global.less";
-@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@125,200..900&family=Orbitron:wght@400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@125,200..900&family=Kosugi+Maru&family=Orbitron:wght@400..900&display=swap");
 
 @thin-width: 1px;
 @thick-border-base: 1.8px solid;
@@ -134,12 +134,13 @@
 
     .console {
       display: grid;
-      gap: 10px;
+      row-gap: 10px;
+      column-gap: 4px;
       grid-template-columns: auto 1fr;
       grid-template-rows: auto 1fr;
       grid-template-areas:
         ". label"
-        "prefix answer";
+        "arrow answer";
       text-align: left;
       height: 100%;
 
@@ -147,19 +148,23 @@
         grid-area: label;
         font-family: @square-font;
         color: @dark;
+        margin-left: 5px;
       }
 
-      .prefix {
-        grid-area: prefix;
+      .arrow {
+        grid-area: arrow;
         font-size: 23px;
-        font-family: @rounded-font;
+        line-height: 1.6em;
+        color: @dark;
+        font-family: "Kosugi Maru", sans-serif;
       }
 
       .answer {
         grid-area: answer;
         outline: none; //去除focus时边框
-        letter-spacing: 1px;
+        letter-spacing: 0.05em;
         font-size: 23px;
+        line-height: 1.6em;
         font-weight: 300;
         font-family: @rounded-font;
         white-space: pre-wrap; //保留空格和手动换行、自动换行
