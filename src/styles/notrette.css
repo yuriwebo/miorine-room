@@ -259,43 +259,44 @@ footer {
   border: 1.8px solid #6e79d7;
 }
 .notrette-container .console-container .console {
-  display: grid;
-  row-gap: 10px;
-  column-gap: 4px;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto 1fr;
-  grid-template-areas: ". label" "arrow answer";
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   height: 100%;
 }
 .notrette-container .console-container .console .label {
-  grid-area: label;
   font-family: "Orbitron", sans-serif;
   color: #324599;
-  margin-left: 5px;
+  margin-left: 25px;
 }
-.notrette-container .console-container .console .arrow {
-  grid-area: arrow;
+.notrette-container .console-container .console .console-line {
+  display: flex;
   font-size: 23px;
   line-height: 1.6em;
-  color: #324599;
   font-family: "Inconsolata", monospace;
+  width: 100%;
+  height: 150px;
+  margin-top: auto;
+  overflow-y: auto;
 }
-.notrette-container .console-container .console .answer {
-  grid-area: answer;
+.notrette-container .console-container .console .console-line .prompt {
+  color: #324599;
+  margin-right: 4px;
+  /* 禁止选中 */
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+.notrette-container .console-container .console .console-line .editor {
+  text-align: left;
   outline: none;
   letter-spacing: 0.05em;
-  font-size: 23px;
-  line-height: 1.6em;
   font-weight: 300;
-  font-family: "Inconsolata", monospace;
   white-space: break-spaces;
   word-break: break-all;
   overflow-wrap: anywhere;
   line-break: normal;
   -webkit-line-break: normal;
-  overflow-y: auto;
-  /* scroll bar非表示 */
 }
 .notrette-container .console-container .output p {
   margin: 0;

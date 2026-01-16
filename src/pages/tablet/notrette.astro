@@ -61,8 +61,14 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
       <!-- 终端输入模拟 -->
       <div class="console">
         <span class="label">Please enter</span>
-        <span class="arrow">&gt;</span>
-        <div class="answer" contenteditable="plaintext-only" spellcheck="false" autofocus="true">{encodedAnswer}</div>
+        <div class="console-line">
+          <span class="prompt">&gt;</span>
+          <div
+            class="editor"
+            contenteditable="plaintext-only"
+            spellcheck="false"
+            autofocus="true">{encodedAnswer}</div>
+        </div>
       </div>
       <!-- 错误信息 -->
       <div class="output fail hide">
@@ -96,30 +102,28 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
 </BaseLayout>
 
 <script>
-  const consoleDiv = document.querySelector(".console") as HTMLDivElement;
-  const answerDiv = document.querySelector('.answer') as HTMLDivElement;
+  const console = document.querySelector(".console") as HTMLDivElement;
+  const editor = console.querySelector('.editor') as HTMLDivElement;
   const failOutput = document.querySelector(".fail") as HTMLDivElement;
   const successOutput = document.querySelector(".success") as HTMLDivElement;
 
   //期待值为初始值
-  const expected = answerDiv.textContent;
+  const expected = editor.textContent;
 
-  answerDiv.addEventListener('keydown', (e) => {
-    // Shift + Enter：正常换行，不拦截
-    // 纯 Enter：触发 console 行为
-    if (e.key === "Enter" && !e.shiftKey) {
+  editor.addEventListener('keydown', (e) => {
+    if (e.key === "Enter") {
       e.preventDefault();
-      const answer = answerDiv.textContent;
+      const answer = editor.textContent;
 
       if (answer === expected) {
         successOutput.classList.remove("hide");
 
-        consoleDiv.classList.add("hide");
+        console.classList.add("hide");
         failOutput.classList.add("hide");
       } else {
         failOutput.classList.remove("hide");
 
-        consoleDiv.classList.add("hide");
+        console.classList.add("hide");
         successOutput.classList.add("hide");
       }
     }
