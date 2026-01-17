@@ -106,6 +106,7 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
   const editor = console.querySelector('.editor') as HTMLDivElement;
   const failOutput = document.querySelector(".fail") as HTMLDivElement;
   const successOutput = document.querySelector(".success") as HTMLDivElement;
+  const heOutput = document.querySelector(".ending") as HTMLDivElement;
 
   //期待值为初始值
   const expected = editor.textContent;
@@ -116,15 +117,26 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
       const answer = editor.textContent;
 
       if (answer === expected) {
+        console.classList.add("hide");
         successOutput.classList.remove("hide");
 
-        console.classList.add("hide");
-        failOutput.classList.add("hide");
+        setTimeout(() => {
+          heOutput.classList.remove("hide");
+        }, 2000);
+
+        setTimeout(() => {
+          heOutput.classList.add("hide");
+          successOutput.classList.add("hide");
+          console.classList.remove("hide");
+        }, 5000);
       } else {
+        console.classList.add("hide");
         failOutput.classList.remove("hide");
 
-        console.classList.add("hide");
-        successOutput.classList.add("hide");
+        setTimeout(() => {
+          failOutput.classList.add("hide");
+          console.classList.remove("hide");
+        }, 2000);
       }
     }
   });
