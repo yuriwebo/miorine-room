@@ -278,6 +278,8 @@ footer {
   height: 150px;
   margin-top: auto;
   overflow-y: auto;
+  scrollbar-color: #324599 transparent;
+  scrollbar-width: thin;
 }
 .notrette-container .console-container .console .console-line .prompt {
   color: #324599;
