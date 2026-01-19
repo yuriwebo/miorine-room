@@ -310,6 +310,9 @@ footer {
   flex-direction: column;
   justify-content: space-around;
 }
+.notrette-container .console-container .output.fail .fade-out {
+  opacity: 0;
+}
 .notrette-container .console-container .output.fail p.error-txt {
   position: relative;
   display: flex;
@@ -325,6 +328,7 @@ footer {
   color: transparent;
   background-clip: text;
   background-image: linear-gradient(#ef2d2a 30%, #ba2320 70%);
+  transition: opacity 0.2s ease;
 }
 .notrette-container .console-container .output.fail p.error-txt .bracket {
   color: #ef2d2a;
@@ -358,6 +362,7 @@ footer {
   font-family: "Orbitron", sans-serif;
   color: #ffdc55;
   font-size: 25px;
+  transition: opacity 0.6s ease;
 }
 .notrette-container .console-container .output.success {
   position: absolute;

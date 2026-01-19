@@ -102,9 +102,8 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
 </BaseLayout>
 
 <script>
-  const console = document.querySelector(".console") as HTMLDivElement;
-  const editor = console.querySelector('.editor') as HTMLDivElement;
-  const failOutput = document.querySelector(".fail") as HTMLDivElement;
+  const consoleDiv = document.querySelector(".console") as HTMLDivElement;
+  const editor = consoleDiv.querySelector('.editor') as HTMLDivElement;
   const successOutput = document.querySelector(".success") as HTMLDivElement;
   const heOutput = document.querySelector(".ending") as HTMLDivElement;
 
@@ -117,7 +116,7 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
       const answer = editor.textContent;
 
       if (answer === expected) {
-        console.classList.add("hide");
+        consoleDiv.classList.add("hide");
         successOutput.classList.remove("hide");
 
         setTimeout(() => {
@@ -127,17 +126,38 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
         setTimeout(() => {
           heOutput.classList.add("hide");
           successOutput.classList.add("hide");
-          console.classList.remove("hide");
+          consoleDiv.classList.remove("hide");
         }, 5000);
       } else {
-        console.classList.add("hide");
-        failOutput.classList.remove("hide");
-
-        setTimeout(() => {
-          failOutput.classList.add("hide");
-          console.classList.remove("hide");
-        }, 2000);
+        showFailOutput();
       }
     }
   });
+
+  const showFailOutput = () => {
+    const failOutput = document.querySelector(".fail") as HTMLDivElement;
+    const fail1 = failOutput.firstElementChild;
+    const fail2 = failOutput.lastElementChild;
+
+    consoleDiv.classList.add("hide");
+    failOutput.classList.remove("hide");
+
+    // 1秒后，fail1和fail2开始淡出，fail2淡出比较慢
+    setTimeout(() => {
+      fail1?.classList.add("fade-out");
+      fail2?.classList.add("fade-out");
+    }, 1000);
+
+    // fail2淡出结束后
+    fail2?.addEventListener('transitionend', () => {
+      // 隐藏容器
+      failOutput.classList.add("hide");
+      // 清理子元素状态
+      fail1?.classList.remove("fade-out");
+      fail2?.classList.remove("fade-out");
+      // 显示console
+      consoleDiv.classList.remove("hide");
+      editor.focus();
+    }, { once: true });
+  };
 </script>
