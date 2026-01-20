@@ -104,8 +104,6 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
 <script>
   const consoleDiv = document.querySelector(".console") as HTMLDivElement;
   const editor = consoleDiv.querySelector('.editor') as HTMLDivElement;
-  const successOutput = document.querySelector(".success") as HTMLDivElement;
-  const heOutput = document.querySelector(".ending") as HTMLDivElement;
 
   //期待值为初始值
   const expected = editor.textContent;
@@ -116,18 +114,7 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
       const answer = editor.textContent;
 
       if (answer === expected) {
-        consoleDiv.classList.add("hide");
-        successOutput.classList.remove("hide");
-
-        setTimeout(() => {
-          heOutput.classList.remove("hide");
-        }, 2000);
-
-        setTimeout(() => {
-          heOutput.classList.add("hide");
-          successOutput.classList.add("hide");
-          consoleDiv.classList.remove("hide");
-        }, 5000);
+        showSuccessOutput();
       } else {
         showFailOutput();
       }
@@ -159,5 +146,33 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
       consoleDiv.classList.remove("hide");
       editor.focus();
     }, { once: true });
+  };
+
+  const showSuccessOutput = () => {
+    const successOutput = document.querySelector(".success") as HTMLDivElement;
+    const success1 = successOutput.firstElementChild;
+    const success2 = successOutput.lastElementChild;
+    const heOutput = document.querySelector(".ending") as HTMLDivElement;
+
+    editor.blur(); //让console不可编辑
+
+    successOutput.classList.remove("hide");
+    success1?.classList.add("fade-in");
+    // success1淡入结束后
+    success1?.addEventListener('animationend', () => {
+      // 先停顿一会后，success2闪烁2次
+      setTimeout(() => {
+        success2?.classList.add("flash-twice");
+      }, 200);
+    }, { once: true });
+
+    // setTimeout(() => {
+    //   heOutput.classList.remove("hide");
+    // }, 3000);
+
+    // setTimeout(() => {
+    //   heOutput.classList.add("hide");
+    //   successOutput.classList.add("hide");
+    // }, 6000);
   };
 </script>

@@ -2,7 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@125,200..900&family=Orbitron:wght@400..900&display=swap");
 
 @thin-width: 1px;
-@thick-border-base: 1.8px solid;
+@thick-width: 1.8px;
+@thick-border-base: @thick-width solid;
 @thin-border-base: @thin-width solid;
 @big-square-size: 8px;
 @small-square-size: 6px;
@@ -207,11 +208,11 @@
           font-family: @square-font;
           border-top: @thin-border-base @error-red;
           border-bottom: @thin-border-base @error-red;
+          transition: opacity 0.2s ease;
           /* 实现error颜色渐变 */
           color: transparent;
           background-clip: text;
           background-image: @error-gradient;
-          transition: opacity 0.2s ease;
 
           .bracket {
             color: @error-red;
@@ -254,34 +255,95 @@
 
       &.success {
         position: absolute;
-        top: @console-padding;
-        bottom: @console-padding;
-        left: @console-padding;
-        right: @console-padding;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: @console-padding;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        background-color: rgba(14, 28, 37, 0.9);
 
         p:first-child {
           font-size: 35px;
           font-weight: 500;
           font-family: @square-font;
-          color: @success-blue;
-          border-top: @thick-border-base @primary;
-          border-bottom: @thick-border-base @primary;
-          padding-top: 10px;
-          padding-bottom: 10px;
+          padding: 10px 0;
           /* 调整文字间距以对齐p长度 */
           display: flex;
           justify-content: space-between;
           align-items: center;
+
+          // 淡入
+          &.fade-in {
+            position: relative;
+            color: transparent;
+            background: linear-gradient(to bottom, @success-blue 0 0) no-repeat; //一个纯色背景块
+            background-size: 100% 0%; //100%宽度，0%高度
+            background-clip: text;
+            animation: textReveal 0.2s ease-in-out forwards;
+
+            &::before,
+            &::after {
+              position: absolute;
+              content: "";
+              width: 100%;
+              height: @thick-width;
+              background: @white;
+              transform: scaleX(0);
+              animation: borderScale 0.2s ease-in-out forwards;
+            }
+            &::before {
+              top: 0;
+              left: 0;
+              transform-origin: left;
+            }
+            &::after {
+              bottom: 0;
+              right: 0;
+              transform-origin: right;
+            }
+
+            @keyframes textReveal {
+              0% {
+                background-size: 100% 0%;
+              }
+              100% {
+                background-size: 100% 100%;
+              }
+            }
+
+            @keyframes borderScale {
+              0% {
+                transform: scaleX(0);
+              }
+              100% {
+                transform: scaleX(1);
+              }
+            }
+          }
         }
 
         p:last-child {
           position: relative;
-          top: 12px;
+          top: 20px;
           font-size: 20px;
           color: @system-yellow;
+          opacity: 0; //初始隐藏
+
+          &.flash-twice {
+            animation: flash 0.1s ease forwards 2; //每次0.1s，执行2次
+          }
+          @keyframes flash {
+            0%,
+            100% {
+              opacity: 1;
+            }
+            50% {
+              opacity: 0;
+            }
+          }
         }
       }
 

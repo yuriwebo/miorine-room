@@ -324,11 +324,11 @@ footer {
   font-family: "Orbitron", sans-serif;
   border-top: 1px solid #ef2d2a;
   border-bottom: 1px solid #ef2d2a;
+  transition: opacity 0.2s ease;
   /* 实现error颜色渐变 */
   color: transparent;
   background-clip: text;
   background-image: linear-gradient(#ef2d2a 30%, #ba2320 70%);
-  transition: opacity 0.2s ease;
 }
 .notrette-container .console-container .output.fail p.error-txt .bracket {
   color: #ef2d2a;
@@ -366,33 +366,88 @@ footer {
 }
 .notrette-container .console-container .output.success {
   position: absolute;
-  top: 15px;
-  bottom: 15px;
-  left: 15px;
-  right: 15px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: rgba(14, 28, 37, 0.9);
 }
 .notrette-container .console-container .output.success p:first-child {
   font-size: 35px;
   font-weight: 500;
   font-family: "Orbitron", sans-serif;
-  color: #2ea6f5;
-  border-top: 1.8px solid #6e79d7;
-  border-bottom: 1.8px solid #6e79d7;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px 0;
   /* 调整文字间距以对齐p长度 */
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+.notrette-container .console-container .output.success p:first-child.fade-in {
+  position: relative;
+  color: transparent;
+  background: linear-gradient(to bottom, #2ea6f5 0 0) no-repeat;
+  background-size: 100% 0%;
+  background-clip: text;
+  animation: textReveal 0.2s ease-in-out forwards;
+}
+.notrette-container .console-container .output.success p:first-child.fade-in::before,
+.notrette-container .console-container .output.success p:first-child.fade-in::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 1.8px;
+  background: #ffffff;
+  transform: scaleX(0);
+  animation: borderScale 0.2s ease-in-out forwards;
+}
+.notrette-container .console-container .output.success p:first-child.fade-in::before {
+  top: 0;
+  left: 0;
+  transform-origin: left;
+}
+.notrette-container .console-container .output.success p:first-child.fade-in::after {
+  bottom: 0;
+  right: 0;
+  transform-origin: right;
+}
+@keyframes textReveal {
+  0% {
+    background-size: 100% 0%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+}
+@keyframes borderScale {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
 .notrette-container .console-container .output.success p:last-child {
   position: relative;
-  top: 12px;
+  top: 20px;
   font-size: 20px;
   color: #ffdc55;
+  opacity: 0;
+}
+.notrette-container .console-container .output.success p:last-child.flash-twice {
+  animation: flash 0.1s ease forwards 2;
+}
+@keyframes flash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 .notrette-container .console-container .output.ending {
   position: absolute;
