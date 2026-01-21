@@ -153,26 +153,48 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
     const success1 = successOutput.firstElementChild;
     const success2 = successOutput.lastElementChild;
     const heOutput = document.querySelector(".ending") as HTMLDivElement;
+    const heText = heOutput.firstElementChild;
 
-    editor.blur(); //让console不可编辑
+    editor.contentEditable = "false"; //防止console反应
 
     successOutput.classList.remove("hide");
     success1?.classList.add("fade-in");
     // success1淡入结束后
     success1?.addEventListener('animationend', () => {
-      // 先停顿一会后，success2闪烁2次
+      // 先停顿一会后，success2出现并闪烁2次
       setTimeout(() => {
         success2?.classList.add("flash-twice");
-      }, 200);
+      }, 300);
     }, { once: true });
 
-    // setTimeout(() => {
-    //   heOutput.classList.remove("hide");
-    // }, 3000);
+    success2?.addEventListener('animationend', () => {
+      // 先停顿一会后，heOutput淡入
+      setTimeout(() => {
+        heOutput.classList.remove("hide");
+        heOutput.classList.add("show");
+      }, 300);
+    }, { once: true });
 
-    // setTimeout(() => {
-    //   heOutput.classList.add("hide");
-    //   successOutput.classList.add("hide");
-    // }, 6000);
+    heOutput?.addEventListener('animationend', () => {
+      // heOutput淡入结束后，heText淡入
+      heText?.classList.add("replay");
+    }, { once: true });
+
+    heText?.addEventListener('animationend', () => {
+      // heText淡入后，先停顿一会
+      setTimeout(() => {
+        // 隐藏容器
+        heOutput.classList.add("hide");
+        successOutput.classList.add("hide");
+        // 清理子元素状态
+        success1?.classList.remove("fade-in");
+        success2?.classList.remove("flash-twice");
+        heOutput?.classList.remove("show");
+        heText?.classList.remove("replay");
+        // 重置editor
+        editor.contentEditable = "true";
+        editor.focus();
+      }, 600);
+    }, { once: true });
   };
 </script>

@@ -374,7 +374,7 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: rgba(14, 28, 37, 0.9);
+  background-color: rgba(255, 255, 255, 0.9);
 }
 .notrette-container .console-container .output.success p:first-child {
   font-size: 35px;
@@ -400,7 +400,7 @@ footer {
   content: "";
   width: 100%;
   height: 1.8px;
-  background: #ffffff;
+  background: #6e79d7;
   transform: scaleX(0);
   animation: borderScale 0.2s ease-in-out forwards;
 }
@@ -451,20 +451,51 @@ footer {
 }
 .notrette-container .console-container .output.ending {
   position: absolute;
-  top: -58px;
-  bottom: -58px;
-  left: 10px;
-  right: 10px;
+  top: -45px;
+  bottom: -45px;
+  left: 5px;
+  right: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 35px;
   font-weight: 500;
   font-family: "Orbitron", sans-serif;
-  color: #2ea6f5;
   background-image: url("/src/images/console-ending.svg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  opacity: 0;
+  transform: scale(0.8);
+}
+.notrette-container .console-container .output.ending.show {
+  animation: fadeInScale 0.2s ease forwards;
+}
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.notrette-container .console-container .output.ending p:first-child {
+  color: transparent;
+  background: linear-gradient(to bottom, #2ea6f5 0 0) no-repeat;
+  background-size: 0% 100%;
+  background-clip: text;
+}
+.notrette-container .console-container .output.ending p:first-child.replay {
+  animation: endTextReveal 0.5s ease-in-out forwards;
+}
+@keyframes endTextReveal {
+  0% {
+    background-size: 0% 100%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
 }
 .notrette-container .console-container .hide {
   display: none !important;
