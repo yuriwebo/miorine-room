@@ -2,14 +2,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@125,200..900&family=Orbitron:wght@400..900&display=swap");
 
 @thin-width: 1px;
-@thick-width: 1.8px;
+@thick-width: clamp(1.2px, 0.2vw, 1.8px);
 @thick-border-base: @thick-width solid;
 @thin-border-base: @thin-width solid;
-@big-square-size: 8px;
+@big-square-size: clamp(4px, 0.7vw, 8px);
 @small-square-size: 6px;
-@console-padding: 15px;
+@console-padding: clamp(5px, 1vw, 15px);
 @square-font: "Orbitron", sans-serif;
 @rounded-font: "Inconsolata", monospace;
+@success-font-size: clamp(9px, 2.6vw, 40px);
 @success-blue: #2ea6f5;
 @system-yellow: #ffdc55;
 @error-red: #ef2d2a;
@@ -19,8 +20,8 @@
   h2 {
     background-color: @light;
     font-weight: normal;
-    font-size: 20px;
-    margin: 0 0 40px;
+    font-size: clamp(10px, 2.3vw, 20px);
+    margin: 0 0 2em;
 
     .title {
       background-color: @white;
@@ -31,11 +32,7 @@
 
   .question-container {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
+    width: 80%;
     margin: 0 auto;
     border-top: @thick-border-base @primary;
     border-left: @thin-border-base @primary;
@@ -44,11 +41,11 @@
     /* 大方块 */
     &::before,
     &::after {
-      content: "";
       position: absolute;
+      content: "";
       width: @big-square-size;
       height: @big-square-size;
-      top: -12px;
+      top: clamp(-13px, -1.2vw, -6px);
       background-color: @dark;
     }
     &::before {
@@ -57,78 +54,10 @@
     &::after {
       right: calc(@thin-width * -1);
     }
-
-    /* 折线 */
-    #decoration-line {
-      position: absolute;
-      top: 14px;
-      width: 97%;
-      height: 45%;
-      border-left: @thin-border-base @primary;
-      border-right: @thin-border-base @primary;
-      border-bottom: @thin-border-base @primary;
-
-      /* 小方块 */
-      &::before,
-      &::after {
-        position: absolute;
-        content: "";
-        top: calc(@small-square-size / -2);
-        display: inline-block;
-        width: @small-square-size;
-        height: @small-square-size;
-        background-color: @primary;
-      }
-      &::before {
-        left: calc((@small-square-size + @thin-width) / -2);
-      }
-      &::after {
-        right: calc((@small-square-size + @thin-width) / -2);
-      }
-    }
-
-    .question {
-      position: relative; //置于装饰线之上
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: @white;
-
-      &.top {
-        font-size: 15px;
-        letter-spacing: 1px;
-        margin: 5px 20px 0;
-        font-family: @rounded-font;
-        color: @light;
-      }
-
-      &.bottom {
-        font-size: 30px;
-        font-family: @square-font;
-        line-height: 1em; //自己的font-size大小
-
-        /* 小长方 */
-        &::before,
-        &::after {
-          content: "";
-          display: inline-block;
-          width: 4px;
-          height: 13px;
-          background-color: @primary;
-        }
-        &::before {
-          margin-right: 10px;
-        }
-        &::after {
-          margin-left: 10px;
-        }
-      }
-    }
   }
 
   .console-container {
     position: relative;
-    height: 220px;
     margin: 0;
     padding: @console-padding;
     border: @thick-border-base @primary;
@@ -140,18 +69,20 @@
       height: 100%;
 
       .label {
+        font-size: clamp(9px, 1.5vw, 16px);
         font-family: @square-font;
         color: @dark;
-        margin-left: 25px;
+        margin-left: 1.5em; //参考当前元素自身的字体大小
+        margin-bottom: 1em;
       }
 
       .console-line {
         display: flex;
-        font-size: 23px;
+        font-size: clamp(13px, 2.2vw, 23px);
         line-height: 1.6em;
         font-family: @rounded-font;
         width: 100%;
-        height: 150px;
+        height: calc(1.6em * 4 + 0.2em); //装4行，多0.2em缓冲
         margin-top: auto; //贴底
         overflow-y: auto; //整个区域一起滚动
         scrollbar-color: @dark transparent;
@@ -186,11 +117,16 @@
       }
 
       &.fail {
-        width: 100%;
-        height: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: @console-padding;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-evenly;
+        background-color: @white;
 
         // 淡出
         .fade-out {
@@ -202,7 +138,7 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
-          font-size: 100px;
+          font-size: clamp(40px, 8vw, 100px);
           font-weight: 900;
           line-height: 1; //避免多余行高
           font-family: @square-font;
@@ -217,7 +153,7 @@
           .bracket {
             color: @error-red;
             font-weight: 500;
-            font-size: 120px;
+            font-size: 1.2em; //参照母元素的字体大小
 
             /* 红小方块 */
             &::before,
@@ -248,7 +184,7 @@
         p:last-child {
           font-family: @square-font;
           color: @system-yellow;
-          font-size: 25px;
+          font-size: clamp(10px, 2vw, 25px);
           transition: opacity 0.6s ease;
         }
       }
@@ -266,10 +202,10 @@
         background-color: rgba(255, 255, 255, 0.9);
 
         p:first-child {
-          font-size: 35px;
+          font-size: @success-font-size;
           font-weight: 500;
           font-family: @square-font;
-          padding: 10px 0;
+          padding: clamp(6px, 0.4em, 10px) 0;
           /* 调整文字间距以对齐p长度 */
           display: flex;
           justify-content: space-between;
@@ -327,8 +263,8 @@
 
         p:last-child {
           position: relative;
-          top: 20px;
-          font-size: 20px;
+          top: clamp(15px, 2vw, 25px);
+          font-size: clamp(7px, 1.4vw, 20px);
           color: @system-yellow;
           opacity: 0; //初始隐藏
 
@@ -349,14 +285,14 @@
 
       &.ending {
         position: absolute;
-        top: -45px;
-        bottom: -45px;
+        top: -1.4em;
+        bottom: -1.4em;
         left: 5px;
         right: 5px;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 35px;
+        font-size: @success-font-size;
         font-weight: 500;
         font-family: @square-font;
         background-image: url("@{images}/console-ending.svg");
@@ -408,7 +344,8 @@
 
   .footnote {
     text-align: end;
-    margin-top: 60px;
+    margin-top: 4em;
+    font-size: clamp(9px, 1.5vw, 16px);
     font-family: @square-font;
   }
 }

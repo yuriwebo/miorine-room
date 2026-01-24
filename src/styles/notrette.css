@@ -154,8 +154,8 @@ footer {
 .notrette-container h2 {
   background-color: #919fe6;
   font-weight: normal;
-  font-size: 20px;
-  margin: 0 0 40px;
+  font-size: clamp(10px, 2.3vw, 20px);
+  margin: 0 0 2em;
 }
 .notrette-container h2 .title {
   background-color: #ffffff;
@@ -164,25 +164,20 @@ footer {
 }
 .notrette-container .question-container {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: fit-content;
+  width: 80%;
   margin: 0 auto;
-  border-top: 1.8px solid #6e79d7;
+  border-top: clamp(1.2px, 0.2vw, 1.8px) solid #6e79d7;
   border-left: 1px solid #6e79d7;
   border-right: 1px solid #6e79d7;
   /* 大方块 */
-  /* 折线 */
 }
 .notrette-container .question-container::before,
 .notrette-container .question-container::after {
-  content: "";
   position: absolute;
-  width: 8px;
-  height: 8px;
-  top: -12px;
+  content: "";
+  width: clamp(4px, 0.7vw, 8px);
+  height: clamp(4px, 0.7vw, 8px);
+  top: clamp(-13px, -1.2vw, -6px);
   background-color: #324599;
 }
 .notrette-container .question-container::before {
@@ -191,72 +186,11 @@ footer {
 .notrette-container .question-container::after {
   right: calc(-1px);
 }
-.notrette-container .question-container #decoration-line {
-  position: absolute;
-  top: 14px;
-  width: 97%;
-  height: 45%;
-  border-left: 1px solid #6e79d7;
-  border-right: 1px solid #6e79d7;
-  border-bottom: 1px solid #6e79d7;
-  /* 小方块 */
-}
-.notrette-container .question-container #decoration-line::before,
-.notrette-container .question-container #decoration-line::after {
-  position: absolute;
-  content: "";
-  top: calc(-3px);
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background-color: #6e79d7;
-}
-.notrette-container .question-container #decoration-line::before {
-  left: calc(-3.5px);
-}
-.notrette-container .question-container #decoration-line::after {
-  right: calc(-3.5px);
-}
-.notrette-container .question-container .question {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ffffff;
-}
-.notrette-container .question-container .question.top {
-  font-size: 15px;
-  letter-spacing: 1px;
-  margin: 5px 20px 0;
-  font-family: "Inconsolata", monospace;
-  color: #919fe6;
-}
-.notrette-container .question-container .question.bottom {
-  font-size: 30px;
-  font-family: "Orbitron", sans-serif;
-  line-height: 1em;
-  /* 小长方 */
-}
-.notrette-container .question-container .question.bottom::before,
-.notrette-container .question-container .question.bottom::after {
-  content: "";
-  display: inline-block;
-  width: 4px;
-  height: 13px;
-  background-color: #6e79d7;
-}
-.notrette-container .question-container .question.bottom::before {
-  margin-right: 10px;
-}
-.notrette-container .question-container .question.bottom::after {
-  margin-left: 10px;
-}
 .notrette-container .console-container {
   position: relative;
-  height: 220px;
   margin: 0;
-  padding: 15px;
-  border: 1.8px solid #6e79d7;
+  padding: clamp(5px, 1vw, 15px);
+  border: clamp(1.2px, 0.2vw, 1.8px) solid #6e79d7;
 }
 .notrette-container .console-container .console {
   display: flex;
@@ -265,17 +199,19 @@ footer {
   height: 100%;
 }
 .notrette-container .console-container .console .label {
+  font-size: clamp(9px, 1.5vw, 16px);
   font-family: "Orbitron", sans-serif;
   color: #324599;
-  margin-left: 25px;
+  margin-left: 1.5em;
+  margin-bottom: 1em;
 }
 .notrette-container .console-container .console .console-line {
   display: flex;
-  font-size: 23px;
+  font-size: clamp(13px, 2.2vw, 23px);
   line-height: 1.6em;
   font-family: "Inconsolata", monospace;
   width: 100%;
-  height: 150px;
+  height: calc(6.6em);
   margin-top: auto;
   overflow-y: auto;
   scrollbar-color: #324599 transparent;
@@ -304,11 +240,16 @@ footer {
   margin: 0;
 }
 .notrette-container .console-container .output.fail {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: clamp(5px, 1vw, 15px);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  background-color: #ffffff;
 }
 .notrette-container .console-container .output.fail .fade-out {
   opacity: 0;
@@ -318,7 +259,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 100px;
+  font-size: clamp(40px, 8vw, 100px);
   font-weight: 900;
   line-height: 1;
   font-family: "Orbitron", sans-serif;
@@ -333,7 +274,7 @@ footer {
 .notrette-container .console-container .output.fail p.error-txt .bracket {
   color: #ef2d2a;
   font-weight: 500;
-  font-size: 120px;
+  font-size: 1.2em;
   /* 红小方块 */
 }
 .notrette-container .console-container .output.fail p.error-txt .bracket::before,
@@ -361,7 +302,7 @@ footer {
 .notrette-container .console-container .output.fail p:last-child {
   font-family: "Orbitron", sans-serif;
   color: #ffdc55;
-  font-size: 25px;
+  font-size: clamp(10px, 2vw, 25px);
   transition: opacity 0.6s ease;
 }
 .notrette-container .console-container .output.success {
@@ -370,17 +311,17 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 15px;
+  padding: clamp(5px, 1vw, 15px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.9);
 }
 .notrette-container .console-container .output.success p:first-child {
-  font-size: 35px;
+  font-size: clamp(9px, 2.6vw, 40px);
   font-weight: 500;
   font-family: "Orbitron", sans-serif;
-  padding: 10px 0;
+  padding: clamp(6px, 0.4em, 10px) 0;
   /* 调整文字间距以对齐p长度 */
   display: flex;
   justify-content: space-between;
@@ -399,7 +340,7 @@ footer {
   position: absolute;
   content: "";
   width: 100%;
-  height: 1.8px;
+  height: clamp(1.2px, 0.2vw, 1.8px);
   background: #6e79d7;
   transform: scaleX(0);
   animation: borderScale 0.2s ease-in-out forwards;
@@ -432,8 +373,8 @@ footer {
 }
 .notrette-container .console-container .output.success p:last-child {
   position: relative;
-  top: 20px;
-  font-size: 20px;
+  top: clamp(15px, 2vw, 25px);
+  font-size: clamp(7px, 1.4vw, 20px);
   color: #ffdc55;
   opacity: 0;
 }
@@ -451,14 +392,14 @@ footer {
 }
 .notrette-container .console-container .output.ending {
   position: absolute;
-  top: -45px;
-  bottom: -45px;
+  top: -1.4em;
+  bottom: -1.4em;
   left: 5px;
   right: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 35px;
+  font-size: clamp(9px, 2.6vw, 40px);
   font-weight: 500;
   font-family: "Orbitron", sans-serif;
   background-image: url("/src/images/console-ending.svg");
@@ -502,6 +443,7 @@ footer {
 }
 .notrette-container .footnote {
   text-align: end;
-  margin-top: 60px;
+  margin-top: 4em;
+  font-size: clamp(9px, 1.5vw, 16px);
   font-family: "Orbitron", sans-serif;
 }

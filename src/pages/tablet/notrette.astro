@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import questionImage from '../../images/console-question.svg';
 import '../../styles/notrette.css';
 
 const geneMap: Record<string, string> = {
@@ -42,8 +43,6 @@ const textToGeneSequence = (text: string) => {
     .join("");
 }
 
-const decodedQuestion = "How are our tomatoes?";
-const encodedQuestion = textToGeneSequence(decodedQuestion);
 const decodedAnswer = "I will always be attached to you, Miorine.";
 const encodedAnswer = textToGeneSequence(decodedAnswer);
 ---
@@ -53,9 +52,7 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
       <span class="title">Emergency Console</span>
     </h2>
     <div class="question-container">
-      <div id="decoration-line"></div>
-      <span class="question top">{encodedQuestion}</span>
-      <span class="question bottom">{decodedQuestion}</span>
+      <img src={questionImage.src} alt="console问题">
     </div>
     <div class="console-container">
       <!-- 终端输入模拟 -->
@@ -126,7 +123,7 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
     const fail1 = failOutput.firstElementChild;
     const fail2 = failOutput.lastElementChild;
 
-    consoleDiv.classList.add("hide");
+    editor.contentEditable = "false"; //防止console反应
     failOutput.classList.remove("hide");
 
     // 1秒后，fail1和fail2开始淡出，fail2淡出比较慢
@@ -142,8 +139,8 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
       // 清理子元素状态
       fail1?.classList.remove("fade-out");
       fail2?.classList.remove("fade-out");
-      // 显示console
-      consoleDiv.classList.remove("hide");
+      // 重置editor
+      editor.contentEditable = "true";
       editor.focus();
     }, { once: true });
   };
