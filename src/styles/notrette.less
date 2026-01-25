@@ -21,12 +21,16 @@
     background-color: @light;
     font-weight: normal;
     font-size: clamp(10px, 2.3vw, 20px);
+    font-family: @square-font;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0.9em; //防止title上下方出现颜色线条
     margin: 0 0 2em;
 
     .title {
       background-color: @white;
-      padding: 0 12px;
-      font-family: @square-font;
+      padding: 0 0.6em;
     }
   }
 

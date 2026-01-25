@@ -155,12 +155,16 @@ footer {
   background-color: #919fe6;
   font-weight: normal;
   font-size: clamp(10px, 2.3vw, 20px);
+  font-family: "Orbitron", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 0.9em;
   margin: 0 0 2em;
 }
 .notrette-container h2 .title {
   background-color: #ffffff;
-  padding: 0 12px;
-  font-family: "Orbitron", sans-serif;
+  padding: 0 0.6em;
 }
 .notrette-container .question-container {
   position: relative;
