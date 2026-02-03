@@ -80,7 +80,8 @@
         margin-bottom: 1em;
       }
 
-      .console-line {
+      .editor-container {
+        position: relative;
         display: flex;
         font-size: clamp(13px, 2.2vw, 23px);
         line-height: 1.6em;
@@ -89,14 +90,14 @@
         height: calc(1.6em * 4 + 0.2em); //装4行，多0.2em缓冲
         margin-top: auto; //贴底
         overflow-y: auto; //整个区域一起滚动
+        overflow-x: hidden;
         scrollbar-color: @dark transparent;
         scrollbar-width: thin;
 
         .prompt {
           color: @dark;
           margin-right: 4px;
-          /* 禁止选中 */
-          user-select: none;
+          user-select: none; //禁止选中
           -webkit-user-select: none; //Safari
           -ms-user-select: none; //IE 10+
         }
@@ -111,6 +112,34 @@
           overflow-wrap: anywhere;
           line-break: normal; //解决Safari行首空格异常换行
           -webkit-line-break: normal;
+          caret-color: transparent;
+          padding-right: 1ch;
+        }
+
+        .custom-caret {
+          position: absolute;
+          width: 1ch;
+          height: 1.1em;
+          background: rgba(128, 128, 128, 0.6); //透明灰色
+          pointer-events: none;
+          opacity: 0;
+
+          &.active {
+            opacity: 1;
+            animation: caretBreath 0.6s ease-in-out infinite;
+
+            @keyframes caretBreath {
+              0% {
+                background: rgba(120, 120, 120, 0.6);
+              }
+              50% {
+                background: rgba(120, 120, 120, 0.2);
+              }
+              100% {
+                background: rgba(120, 120, 120, 0.6);
+              }
+            }
+          }
         }
       }
     }

@@ -209,7 +209,8 @@ footer {
   margin-left: 1.5em;
   margin-bottom: 1em;
 }
-.notrette-container .console-container .console .console-line {
+.notrette-container .console-container .console .editor-container {
+  position: relative;
   display: flex;
   font-size: clamp(13px, 2.2vw, 23px);
   line-height: 1.6em;
@@ -218,18 +219,18 @@ footer {
   height: calc(6.6em);
   margin-top: auto;
   overflow-y: auto;
+  overflow-x: hidden;
   scrollbar-color: #324599 transparent;
   scrollbar-width: thin;
 }
-.notrette-container .console-container .console .console-line .prompt {
+.notrette-container .console-container .console .editor-container .prompt {
   color: #324599;
   margin-right: 4px;
-  /* 禁止选中 */
   user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
 }
-.notrette-container .console-container .console .console-line .editor {
+.notrette-container .console-container .console .editor-container .editor {
   text-align: left;
   outline: none;
   letter-spacing: 0.05em;
@@ -239,6 +240,31 @@ footer {
   overflow-wrap: anywhere;
   line-break: normal;
   -webkit-line-break: normal;
+  caret-color: transparent;
+  padding-right: 1ch;
+}
+.notrette-container .console-container .console .editor-container .custom-caret {
+  position: absolute;
+  width: 1ch;
+  height: 1.1em;
+  background: rgba(128, 128, 128, 0.6);
+  pointer-events: none;
+  opacity: 0;
+}
+.notrette-container .console-container .console .editor-container .custom-caret.active {
+  opacity: 1;
+  animation: caretBreath 0.6s ease-in-out infinite;
+}
+@keyframes caretBreath {
+  0% {
+    background: rgba(120, 120, 120, 0.6);
+  }
+  50% {
+    background: rgba(120, 120, 120, 0.2);
+  }
+  100% {
+    background: rgba(120, 120, 120, 0.6);
+  }
 }
 .notrette-container .console-container .output p {
   margin: 0;

@@ -58,13 +58,14 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
       <!-- 终端输入模拟 -->
       <div class="console">
         <span class="label">Please enter</span>
-        <div class="console-line">
+        <div class="editor-container">
           <span class="prompt">&gt;</span>
           <div
             class="editor"
             contenteditable="plaintext-only"
             spellcheck="false"
             autofocus="true">{encodedAnswer}</div>
+          <div class="custom-caret"></div>
         </div>
       </div>
       <!-- 错误信息 -->
@@ -101,10 +102,128 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
 <script>
   const consoleDiv = document.querySelector(".console") as HTMLDivElement;
   const editor = consoleDiv.querySelector('.editor') as HTMLDivElement;
+  const customCaret = consoleDiv.querySelector('.custom-caret') as HTMLDivElement;
 
   //期待值为初始值
   const expected = editor.textContent;
 
+  // 记录英文行高基准，避免 Firefox / 一些浏览器中文字符导致光标上浮
+  // 当整行都是英文字符时，记录 rect.height 基准，以后出现中文时，用它来修正光标垂直偏移
+  let baseRectHeight: number | null = null;
+
+  // 宽字符正则和判断函数
+  const WIDE_CHAR_RE =
+    /[\u1100-\u115F\u2E80-\uA4CF\uAC00-\uD7A3\uF900-\uFAFF\uFE10-\uFE6F\uFF00-\uFF60\uFFE0-\uFFE6]/;
+
+  // 判断一个字符是否是全角 / CJK 宽字符
+  const isWideChar = (ch: string) => {
+    return WIDE_CHAR_RE.test(ch);
+  };
+
+  // 更新自定义光标位置
+  const updateCustomCaret = () => {
+    // 如果 editor 不是激活状态，就隐藏光标
+    if (document.activeElement !== editor) {
+      customCaret.classList.remove('active');
+      return;
+    }
+
+    // 获取当前 selection
+    const sel = window.getSelection();
+    if (!sel?.rangeCount) return; // 没有选区就直接返回
+
+    // 克隆当前光标所在的 range（避免直接改原始 range）
+    const range = sel.getRangeAt(0).cloneRange();
+    // 确保光标在 editor 内
+    if (!editor.contains(range.startContainer)) return;
+
+    // 光标收缩到插入点（不要选中文本）
+    range.collapse(false);
+
+    // 获取光标对应的矩形（客户端坐标）
+    const rect = range.getClientRects()[0];
+    if (!rect) return; // 如果没矩形（比如空行），就直接返回
+
+    // 获取 editor 的母容器位置，用来计算相对偏移
+    const container = editor.parentElement!;
+    const containerRect = container.getBoundingClientRect();
+
+    // 光标相对于容器左上角的坐标
+    const x = rect.left - containerRect.left + container.scrollLeft;
+    const y = rect.top - containerRect.top + container.scrollTop;
+
+    // =============================
+    // 文本信息处理
+    // =============================
+    let text = '';     // 当前节点的文本
+    let nextChar = ''; // 光标后面那个字符
+
+    const node = range.startContainer;
+    if (node.nodeType === Node.TEXT_NODE) {
+      text = node.textContent || '';
+      nextChar = text[range.startOffset] || '';
+    }
+
+    // =============================
+    // 光标宽度判断（只看后字符）
+    // =============================
+    // 原理：英文/数字 → 瘦光标；中文/全角 → 宽光标
+    const caretWidth = isWideChar(nextChar) ? '1.7ch' : '1ch';
+
+    // =============================
+    // 光标垂直偏移修正
+    // =============================
+    let visualOffsetY = 0;
+
+    if (text) {
+      // 整行是否有宽字符
+      const hasWide = WIDE_CHAR_RE.test(text);
+
+      if (!hasWide) {
+        // 整行纯英文 → 记录基准高度
+        baseRectHeight = rect.height;
+      } else if (baseRectHeight !== null) {
+        // 出现宽字符 → 用高度差修正
+        // 浏览器中文 rect.height 往上扩，取一半压回去
+        visualOffsetY = (rect.height - baseRectHeight) / 2;
+      }
+    }
+
+    customCaret.style.width = caretWidth;
+    customCaret.style.left = `${x}px`;
+    customCaret.style.top = `${y + visualOffsetY}px`;
+    customCaret.classList.add('active');
+  };
+
+  editor.addEventListener('focus', () => {
+    customCaret.classList.add('active');
+    updateCustomCaret();
+  });
+
+  editor.addEventListener('blur', () => {
+    customCaret.classList.remove('active');
+  });
+
+  ['input', 'keyup', 'keydown', 'scroll'].forEach(event => {
+    editor.addEventListener(event, updateCustomCaret);
+  });
+
+  // 移动光标器时更新自定义光标位置
+  document.addEventListener('selectionchange', () => {
+    if (document.activeElement === editor) {
+      updateCustomCaret();
+    }
+  });
+
+  window.addEventListener('resize', updateCustomCaret);
+
+  // 页面加载完成后，聚焦 editor 并初始化光标
+  document.addEventListener('DOMContentLoaded', () => {
+    editor.focus();
+    updateCustomCaret();
+  });
+
+  // 判断输入值，显示output
   editor.addEventListener('keydown', (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
