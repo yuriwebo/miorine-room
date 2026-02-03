@@ -8,6 +8,7 @@
 @big-square-size: clamp(4px, 0.7vw, 8px);
 @small-square-size: 6px;
 @console-padding: clamp(5px, 1vw, 15px);
+@label-font: clamp(9px, 1.5vw, 18px);
 @square-font: "Orbitron", sans-serif;
 @rounded-font: "Inconsolata", monospace;
 @success-font-size: clamp(9px, 2.6vw, 40px);
@@ -73,22 +74,24 @@
       height: 100%;
 
       .label {
-        font-size: clamp(9px, 1.5vw, 16px);
+        font-size: @label-font;
         font-family: @square-font;
         color: @dark;
-        margin-left: 1.5em; //参考当前元素自身的字体大小
-        margin-bottom: 1em;
+        margin-top: 0.4em;
+        margin-left: 2.1em; //参考当前元素自身的字体大小
       }
 
       .editor-container {
         position: relative;
         display: flex;
-        font-size: clamp(13px, 2.2vw, 23px);
+        font-size: clamp(13px, 2.2vw, 25px);
         line-height: 1.6em;
+        margin-top: 0.5em;
         font-family: @rounded-font;
         width: 100%;
+        padding-right: 1ch; //光标宽度
+        padding-left: 0.6ch; //让editor内容块显得水平居中
         height: calc(1.6em * 4 + 0.2em); //装4行，多0.2em缓冲
-        margin-top: auto; //贴底
         overflow-y: auto; //整个区域一起滚动
         overflow-x: hidden;
         scrollbar-color: @dark transparent;
@@ -96,7 +99,7 @@
 
         .prompt {
           color: @dark;
-          margin-right: 4px;
+          margin-right: 0.3ch;
           user-select: none; //禁止选中
           -webkit-user-select: none; //Safari
           -ms-user-select: none; //IE 10+
@@ -113,12 +116,10 @@
           line-break: normal; //解决Safari行首空格异常换行
           -webkit-line-break: normal;
           caret-color: transparent;
-          padding-right: 1ch;
         }
 
         .custom-caret {
           position: absolute;
-          width: 1ch;
           height: 1.1em;
           background: rgba(128, 128, 128, 0.6); //透明灰色
           pointer-events: none;
@@ -378,7 +379,7 @@
   .footnote {
     text-align: end;
     margin-top: 4em;
-    font-size: clamp(9px, 1.5vw, 16px);
+    font-size: @label-font;
     font-family: @square-font;
   }
 }
