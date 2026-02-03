@@ -244,6 +244,11 @@ footer {
   -webkit-line-break: normal;
   caret-color: transparent;
 }
+.notrette-container .console-container .console .editor-container .editor::selection,
+.notrette-container .console-container .console .editor-container .editor ::-webkit-selection {
+  background: #e3e4ed;
+  color: inherit;
+}
 .notrette-container .console-container .console .editor-container .custom-caret {
   position: absolute;
   height: 1.1em;

@@ -116,6 +116,13 @@
           line-break: normal; //解决Safari行首空格异常换行
           -webkit-line-break: normal;
           caret-color: transparent;
+
+          // 选中文字时
+          &::selection,
+          ::-webkit-selection {
+            background: #e3e4ed;
+            color: inherit; //保持文字颜色不变
+          }
         }
 
         .custom-caret {
