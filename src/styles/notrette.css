@@ -170,7 +170,7 @@ footer {
   position: relative;
   width: 80%;
   margin: 0 auto;
-  border-top: clamp(1.2px, 0.2vw, 1.8px) solid #6e79d7;
+  border-top: clamp(1px, 0.2vw, 1.8px) solid #6e79d7;
   border-left: 1px solid #6e79d7;
   border-right: 1px solid #6e79d7;
   /* 大方块 */
@@ -194,7 +194,7 @@ footer {
   position: relative;
   margin: 0;
   padding: clamp(5px, 1vw, 15px);
-  border: clamp(1.2px, 0.2vw, 1.8px) solid #6e79d7;
+  border: clamp(1px, 0.2vw, 1.8px) solid #6e79d7;
 }
 .notrette-container .console-container .console {
   display: flex;
@@ -316,17 +316,17 @@ footer {
 .notrette-container .console-container .output.fail p.error-txt .bracket::after {
   position: absolute;
   content: "";
-  width: 6px;
-  height: 6px;
+  width: 0.07em;
+  height: 0.07em;
   background-color: #ef2d2a;
 }
 .notrette-container .console-container .output.fail p.error-txt .bracket.left::before,
 .notrette-container .console-container .output.fail p.error-txt .bracket.left::after {
-  top: calc(-3.5px);
+  top: calc((0.07em + 1px) / -2);
 }
 .notrette-container .console-container .output.fail p.error-txt .bracket.right::before,
 .notrette-container .console-container .output.fail p.error-txt .bracket.right::after {
-  bottom: calc(-3.5px);
+  bottom: calc((0.07em + 1px) / -2);
 }
 .notrette-container .console-container .output.fail p.error-txt .bracket::before {
   left: 0px;
@@ -336,7 +336,7 @@ footer {
 }
 .notrette-container .console-container .output.fail p:last-child {
   font-family: "Orbitron", sans-serif;
-  color: #ffdc55;
+  color: #ffcd11;
   font-size: clamp(10px, 2vw, 25px);
   transition: opacity 0.6s ease;
 }
@@ -349,11 +349,11 @@ footer {
   padding: clamp(5px, 1vw, 15px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   background-color: rgba(255, 255, 255, 0.9);
 }
 .notrette-container .console-container .output.success p:first-child {
-  font-size: clamp(9px, 2.6vw, 40px);
+  font-size: clamp(9.5px, 2.6vw, 40px);
   font-weight: 500;
   font-family: "Orbitron", sans-serif;
   padding: clamp(6px, 0.4em, 10px) 0;
@@ -375,7 +375,7 @@ footer {
   position: absolute;
   content: "";
   width: 100%;
-  height: clamp(1.2px, 0.2vw, 1.8px);
+  height: clamp(1px, 0.2vw, 1.8px);
   background: #6e79d7;
   transform: scaleX(0);
   animation: borderScale 0.2s ease-in-out forwards;
@@ -407,10 +407,12 @@ footer {
   }
 }
 .notrette-container .console-container .output.success p:last-child {
-  position: relative;
-  top: clamp(15px, 2vw, 25px);
-  font-size: clamp(7px, 1.4vw, 20px);
-  color: #ffdc55;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(7.2px, 1.4vw, 20px);
+  color: #ffcd11;
   opacity: 0;
 }
 .notrette-container .console-container .output.success p:last-child.flash-twice {
@@ -434,7 +436,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: clamp(9px, 2.6vw, 40px);
+  font-size: clamp(11px, 2.6vw, 40px);
   font-weight: 500;
   font-family: "Orbitron", sans-serif;
   background-image: url("/src/images/console-ending.svg");

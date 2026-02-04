@@ -2,18 +2,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@125,200..900&family=Orbitron:wght@400..900&display=swap");
 
 @thin-width: 1px;
-@thick-width: clamp(1.2px, 0.2vw, 1.8px);
+@thick-width: clamp(1px, 0.2vw, 1.8px);
 @thick-border-base: @thick-width solid;
 @thin-border-base: @thin-width solid;
-@big-square-size: clamp(4px, 0.7vw, 8px);
-@small-square-size: 6px;
 @console-padding: clamp(5px, 1vw, 15px);
 @label-font: clamp(9px, 1.5vw, 18px);
 @square-font: "Orbitron", sans-serif;
 @rounded-font: "Inconsolata", monospace;
-@success-font-size: clamp(9px, 2.6vw, 40px);
 @success-blue: #2ea6f5;
-@system-yellow: #ffdc55;
+@system-yellow: #ffcd11;
 @error-red: #ef2d2a;
 @error-gradient: linear-gradient(@error-red 30%, #ba2320 70%);
 
@@ -48,6 +45,7 @@
     &::after {
       position: absolute;
       content: "";
+      @big-square-size: clamp(4px, 0.7vw, 8px);
       width: @big-square-size;
       height: @big-square-size;
       top: clamp(-13px, -1.2vw, -6px);
@@ -195,6 +193,7 @@
             color: @error-red;
             font-weight: 500;
             font-size: 1.2em; //参照母元素的字体大小
+            @small-square-size: 0.07em;
 
             /* 红小方块 */
             &::before,
@@ -207,11 +206,12 @@
             }
             &.left::before,
             &.left::after {
-              top: calc((@small-square-size + @thin-width) / -2);
+              // Less不能算不同单位，让浏览器算（字符串逃逸 ~"" + 插值@{var}）
+              top: calc(~"(@{small-square-size} + @{thin-width}) / -2");
             }
             &.right::before,
             &.right::after {
-              bottom: calc((@small-square-size + @thin-width) / -2);
+              bottom: calc(~"(@{small-square-size} + @{thin-width}) / -2");
             }
             &::before {
               left: 0px;
@@ -239,11 +239,11 @@
         padding: @console-padding;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-end;
         background-color: rgba(255, 255, 255, 0.9);
 
         p:first-child {
-          font-size: @success-font-size;
+          font-size: clamp(9.5px, 2.6vw, 40px);
           font-weight: 500;
           font-family: @square-font;
           padding: clamp(6px, 0.4em, 10px) 0;
@@ -303,9 +303,11 @@
         }
 
         p:last-child {
-          position: relative;
-          top: clamp(15px, 2vw, 25px);
-          font-size: clamp(7px, 1.4vw, 20px);
+          height: 40%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: clamp(7.2px, 1.4vw, 20px);
           color: @system-yellow;
           opacity: 0; //初始隐藏
 
@@ -333,7 +335,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: @success-font-size;
+        font-size: clamp(11px, 2.6vw, 40px);
         font-weight: 500;
         font-family: @square-font;
         background-image: url("@{images}/console-ending.svg");
