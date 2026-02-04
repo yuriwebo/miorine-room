@@ -8,16 +8,20 @@
 }
 * {
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 body {
   margin: 0;
   padding: 0;
   font-family: "Seele-1", "Seele-2", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   min-height: 100vh;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   text-align: center;
   color: #6e79d7;
 }
@@ -29,7 +33,9 @@ header a {
   color: #6e79d7;
 }
 main {
-  flex: 1;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 .content {
   width: 80%;
@@ -156,9 +162,15 @@ footer {
   font-weight: normal;
   font-size: clamp(10px, 2.3vw, 20px);
   font-family: "Orbitron", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 0.9em;
   margin: 0 0 2em;
 }
@@ -202,9 +214,16 @@ footer {
   border: clamp(1px, 0.2vw, 1.8px) solid #6e79d7;
 }
 .notrette-container .console-container .console {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   height: 100%;
 }
 .notrette-container .console-container .console .label {
@@ -216,6 +235,8 @@ footer {
 }
 .notrette-container .console-container .console .editor-container {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: clamp(13px, 2.2vw, 25px);
   line-height: 1.6em;
@@ -233,7 +254,8 @@ footer {
 .notrette-container .console-container .console .editor-container .prompt {
   color: #324599;
   margin-right: 0.3ch;
-  user-select: none;
+  -moz-user-select: none;
+       user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
 }
@@ -263,7 +285,19 @@ footer {
 }
 .notrette-container .console-container .console .editor-container .custom-caret.active {
   opacity: 1;
-  animation: caretBreath 0.6s ease-in-out infinite;
+  -webkit-animation: caretBreath 0.6s ease-in-out infinite;
+          animation: caretBreath 0.6s ease-in-out infinite;
+}
+@-webkit-keyframes caretBreath {
+  0% {
+    background: rgba(120, 120, 120, 0.6);
+  }
+  50% {
+    background: rgba(120, 120, 120, 0.2);
+  }
+  100% {
+    background: rgba(120, 120, 120, 0.6);
+  }
 }
 @keyframes caretBreath {
   0% {
@@ -286,9 +320,16 @@ footer {
   left: 0;
   right: 0;
   padding: clamp(5px, 1vw, 15px);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   background-color: #ffffff;
 }
 .notrette-container .console-container .output.fail .fade-out {
@@ -296,19 +337,27 @@ footer {
 }
 .notrette-container .console-container .output.fail p.error-txt {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: clamp(40px, 8vw, 100px);
   font-weight: 900;
   line-height: 1;
   font-family: "Orbitron", sans-serif;
   border-top: 1px solid #ef2d2a;
   border-bottom: 1px solid #ef2d2a;
+  -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
   /* 实现error颜色渐变 */
   color: transparent;
   background-clip: text;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(30%, #ef2d2a), color-stop(70%, #ba2320));
   background-image: linear-gradient(#ef2d2a 30%, #ba2320 70%);
 }
 .notrette-container .console-container .output.fail p.error-txt .bracket {
@@ -343,6 +392,7 @@ footer {
   font-family: "Orbitron", sans-serif;
   color: #ffcd11;
   font-size: clamp(10.5px, 2.1vw, 26px);
+  -webkit-transition: opacity 0.6s ease;
   transition: opacity 0.6s ease;
 }
 .notrette-container .console-container .output.success {
@@ -352,9 +402,16 @@ footer {
   left: 0;
   right: 0;
   padding: clamp(5px, 1vw, 15px);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   background-color: rgba(255, 255, 255, 0.9);
 }
 .notrette-container .console-container .output.success p:first-child {
@@ -363,17 +420,25 @@ footer {
   font-family: "Orbitron", sans-serif;
   padding: clamp(6px, 0.4em, 10px) 0;
   /* 调整文字间距以对齐p长度 */
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .notrette-container .console-container .output.success p:first-child.fade-in {
   position: relative;
   color: transparent;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #2ea6f5)) no-repeat;
   background: linear-gradient(to bottom, #2ea6f5 0 0) no-repeat;
   background-size: 100% 0%;
   background-clip: text;
-  animation: textReveal 0.2s ease-in-out forwards;
+  -webkit-animation: textReveal 0.2s ease-in-out forwards;
+          animation: textReveal 0.2s ease-in-out forwards;
 }
 .notrette-container .console-container .output.success p:first-child.fade-in::before,
 .notrette-container .console-container .output.success p:first-child.fade-in::after {
@@ -382,18 +447,30 @@ footer {
   width: 100%;
   height: clamp(1px, 0.2vw, 1.8px);
   background: #6e79d7;
-  transform: scaleX(0);
-  animation: borderScale 0.2s ease-in-out forwards;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-animation: borderScale 0.2s ease-in-out forwards;
+          animation: borderScale 0.2s ease-in-out forwards;
 }
 .notrette-container .console-container .output.success p:first-child.fade-in::before {
   top: 0;
   left: 0;
-  transform-origin: left;
+  -webkit-transform-origin: left;
+          transform-origin: left;
 }
 .notrette-container .console-container .output.success p:first-child.fade-in::after {
   bottom: 0;
   right: 0;
-  transform-origin: right;
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+@-webkit-keyframes textReveal {
+  0% {
+    background-size: 100% 0%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
 }
 @keyframes textReveal {
   0% {
@@ -403,25 +480,53 @@ footer {
     background-size: 100% 100%;
   }
 }
-@keyframes borderScale {
+@-webkit-keyframes borderScale {
   0% {
-    transform: scaleX(0);
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
   }
   100% {
-    transform: scaleX(1);
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+}
+@keyframes borderScale {
+  0% {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
   }
 }
 .notrette-container .console-container .output.success p:last-child {
   height: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: clamp(7.5px, 1.5vw, 20px);
   color: #ffcd11;
   opacity: 0;
 }
 .notrette-container .console-container .output.success p:last-child.flash-twice {
-  animation: flash 0.1s ease forwards 2;
+  -webkit-animation: flash 0.1s ease forwards 2;
+          animation: flash 0.1s ease forwards 2;
+}
+@-webkit-keyframes flash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 @keyframes flash {
   0%,
@@ -438,9 +543,15 @@ footer {
   bottom: -1.4em;
   left: 5px;
   right: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: clamp(11px, 2.6vw, 40px);
   font-weight: 500;
   font-family: "Orbitron", sans-serif;
@@ -448,29 +559,55 @@ footer {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   opacity: 0;
-  transform: scale(0.8);
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
 }
 .notrette-container .console-container .output.ending.show {
-  animation: fadeInScale 0.2s ease forwards;
+  -webkit-animation: fadeInScale 0.2s ease forwards;
+          animation: fadeInScale 0.2s ease forwards;
+}
+@-webkit-keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
 }
 @keyframes fadeInScale {
   0% {
     opacity: 0;
-    transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
   }
   100% {
     opacity: 1;
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 .notrette-container .console-container .output.ending p:first-child {
   color: transparent;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #2ea6f5)) no-repeat;
   background: linear-gradient(to bottom, #2ea6f5 0 0) no-repeat;
   background-size: 0% 100%;
   background-clip: text;
 }
 .notrette-container .console-container .output.ending p:first-child.replay {
-  animation: endTextReveal 0.5s ease-in-out forwards;
+  -webkit-animation: endTextReveal 0.5s ease-in-out forwards;
+          animation: endTextReveal 0.5s ease-in-out forwards;
+}
+@-webkit-keyframes endTextReveal {
+  0% {
+    background-size: 0% 100%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
 }
 @keyframes endTextReveal {
   0% {
