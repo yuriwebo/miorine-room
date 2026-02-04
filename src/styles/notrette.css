@@ -175,6 +175,11 @@ footer {
   border-right: 1px solid #6e79d7;
   /* 大方块 */
 }
+.notrette-container .question-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 .notrette-container .question-container::before,
 .notrette-container .question-container::after {
   position: absolute;
@@ -337,7 +342,7 @@ footer {
 .notrette-container .console-container .output.fail p:last-child {
   font-family: "Orbitron", sans-serif;
   color: #ffcd11;
-  font-size: clamp(10px, 2vw, 25px);
+  font-size: clamp(10.5px, 2.1vw, 26px);
   transition: opacity 0.6s ease;
 }
 .notrette-container .console-container .output.success {
@@ -411,7 +416,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: clamp(7.2px, 1.4vw, 20px);
+  font-size: clamp(7.5px, 1.5vw, 20px);
   color: #ffcd11;
   opacity: 0;
 }

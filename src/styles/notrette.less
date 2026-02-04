@@ -40,6 +40,12 @@
     border-left: @thin-border-base @primary;
     border-right: @thin-border-base @primary;
 
+    img {
+      display: block; //去掉 inline-block 的 baseline 空白，让 div 高度自动撑满图片
+      width: 100%;
+      height: auto; //保持比例
+    }
+
     /* 大方块 */
     &::before,
     &::after {
@@ -225,7 +231,7 @@
         p:last-child {
           font-family: @square-font;
           color: @system-yellow;
-          font-size: clamp(10px, 2vw, 25px);
+          font-size: clamp(10.5px, 2.1vw, 26px);
           transition: opacity 0.6s ease;
         }
       }
@@ -307,7 +313,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          font-size: clamp(7.2px, 1.4vw, 20px);
+          font-size: clamp(7.5px, 1.5vw, 20px);
           color: @system-yellow;
           opacity: 0; //初始隐藏
 
