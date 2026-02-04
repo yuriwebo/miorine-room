@@ -216,8 +216,8 @@ const encodedAnswer = textToGeneSequence(decodedAnswer);
 
   window.addEventListener('resize', updateCustomCaret);
 
-  // 页面加载完成后，聚焦 editor 并初始化光标
-  document.addEventListener('DOMContentLoaded', () => {
+  // 监听字体加载，聚焦 editor 并初始化光标
+  document.fonts.ready.then(() => {
     editor.focus();
     updateCustomCaret();
   });
