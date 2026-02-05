@@ -1,0 +1,59 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import avatarImage from '../../images/avatar.png';
+import '../../styles/profile.css';
+---
+<BaseLayout>
+  <div class="content profile-container">
+    <h2>Asticassia School of Technology</h2>
+    <div class="up-area">
+      <div class="avatar-container">
+        <img src={avatarImage.src} alt="米总证件照">
+        <span>PICT:M-0001/001</span>
+      </div>
+      <div class="info up">
+        <p class="department">MANAGEMENT<br>STRATEGY DEPARTMENT</p>
+        <p>
+          <span class="label">NAME</span>
+          <span class="detail">MIORINE<br>REMBRAN</span>
+        </p>
+        <p>
+          <span class="label">ID No.</span>
+          <span class="detail">LS001</span>
+        </p>
+      </div>
+    </div>
+    <div class="info down">
+      <p>
+        <span class="label">BIRTHPLACE</span>
+        <span class="detail">SPACE</span>
+      </p>
+      <p>
+        <span class="label">HOUSE</span>
+        <span class="detail">NODATA</span>
+      </p>
+      <p>
+        <span class="label bend">
+          <span>PC-CRIMINAL</span>
+          <span>RECORD</span>
+        </span>
+        <span class="detail">NODATA</span>
+      </p>
+      <p>
+        <span class="label bend">
+          <span>PC-BIOMETRIC</span>
+          <span>SYSTEM</span>
+        </span>
+        <span class="detail">REGISTERED</span>
+      </p>
+      <p>
+        <span class="label">SPOUSE</span>
+        <span class="detail bend">
+          <span class="suletta">SULETTA</span>
+          <span>MERCURY</span>
+        </span>
+      </p>
+      <p>OFFICIAL DATA</p>
+    </div>
+  </div>
+</BaseLayout>
