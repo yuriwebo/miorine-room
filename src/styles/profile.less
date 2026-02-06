@@ -9,10 +9,16 @@
   h2 {
     width: fit-content;
     margin: 15px 0 0;
-    padding: 2px 8px;
     font-size: 15px;
-    color: @white;
-    background-color: @primary;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 90px;
+      background-color: @primary;
+      mask: url("@{images}/school-logo.svg") no-repeat center / contain;
+    }
   }
 
   .up-area {
@@ -105,6 +111,16 @@
   }
 
   @media (min-width: 900px) {
+    h2 {
+      padding: 2px 8px;
+      color: @white;
+      background-color: @primary;
+
+      &::before {
+        display: none;
+      }
+    }
+
     .up-area {
       flex-direction: row;
       justify-content: center;
@@ -114,6 +130,10 @@
     .info {
       &.up {
         width: fit-content;
+        background-image: url("@{images}/school-logo.svg");
+        background-size: auto 65%;
+        background-position: 0% 30%;
+        background-repeat: no-repeat;
 
         :nth-child(1) {
           order: 1;
