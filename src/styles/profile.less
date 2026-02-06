@@ -89,14 +89,18 @@
   .detail {
     font-size: 20px;
 
-    &.bend {
+    &.name {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
     }
 
-    .suletta {
-      color: #ffc865;
+    &.spouse {
+      display: flex;
+      gap: 5px;
+
+      span:first-child {
+        color: #ffc865;
+      }
     }
   }
 
@@ -127,13 +131,6 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 0;
-      }
-    }
-
-    .detail {
-      &.bend {
-        flex-direction: row;
-        gap: 5px;
       }
     }
   }

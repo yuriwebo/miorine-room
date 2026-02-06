@@ -166,7 +166,7 @@ footer {
 .profile-container .detail {
   font-size: 20px;
 }
-.profile-container .detail.bend {
+.profile-container .detail.name {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -174,11 +174,14 @@ footer {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
 }
-.profile-container .detail .suletta {
+.profile-container .detail.spouse {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 5px;
+}
+.profile-container .detail.spouse span:first-child {
   color: #ffc865;
 }
 @media (min-width: 900px) {
@@ -220,12 +223,5 @@ footer {
         -ms-flex-align: start;
             align-items: flex-start;
     gap: 0;
-  }
-  .profile-container .detail.bend {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    gap: 5px;
   }
 }
